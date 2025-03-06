@@ -1,4 +1,4 @@
-package yt.mak.hollowmine.custom.items;
+package yt.mak.hollowmine.init.items;
 
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yt.mak.hollowmine.HollowMine;
+import yt.mak.hollowmine.custom.items.HollowMaskArmorItem;
 
 public class MakItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -19,8 +20,9 @@ public class MakItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> HOLLOW_MASK = ITEMS.register("hollow_mask",
-            () -> new ArmorItem(MakArmorItems.HOLLOW_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+            () -> new HollowMaskArmorItem(MakArmorItems.HOLLOW_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(18))));
+
     public static final RegistryObject<Item> ALEXANDRITE_CHESTPLATE = ITEMS.register("alexandrite_chestplate",
             () -> new ArmorItem(MakArmorItems.HOLLOW_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(18))));

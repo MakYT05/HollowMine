@@ -1,4 +1,4 @@
-package yt.mak.hollowmine.custom.items;
+package yt.mak.hollowmine.init.items;
 
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
@@ -31,7 +31,7 @@ public class MakArmorItems {
         ResourceLocation location = ResourceLocation.fromNamespaceAndPath(HollowMine.MODID, name);
         Holder<SoundEvent> equipSound = SoundEvents.ARMOR_EQUIP_NETHERITE;
         Supplier<Ingredient> ingredient = () -> Ingredient.of(ingredientItem.get());
-        List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(location));
+        List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(HollowMine.MODID, "textures/models/armor/hollow_arm_layer_1.png")));
 
         EnumMap<ArmorItem.Type, Integer> typeMap = new EnumMap<>(ArmorItem.Type.class);
         for (ArmorItem.Type type : ArmorItem.Type.values()) {

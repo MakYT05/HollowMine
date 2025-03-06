@@ -15,7 +15,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import yt.mak.hollowmine.custom.items.MakItems;
+import yt.mak.hollowmine.init.items.MakItems;
 
 @Mod(HollowMine.MODID)
 public class HollowMine {
@@ -41,8 +41,8 @@ public class HollowMine {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        MakItems.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
+        MakItems.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }

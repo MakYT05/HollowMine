@@ -13,7 +13,7 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.custom.items.MakItems;
+import yt.mak.hollowmine.init.items.MakItems;
 
 import java.util.LinkedHashMap;
 
@@ -42,6 +42,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         trimmedArmorItem(MakItems.HOLLOW_MASK);
         trimmedArmorItem(MakItems.ALEXANDRITE_CHESTPLATE);
+
+        withExistingParent("hollow_mask", "item/generated")
+                .texture("layer0", "hollowmine:item/hollow_mask");
     }
 
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
