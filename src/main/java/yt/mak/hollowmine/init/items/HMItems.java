@@ -7,7 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.custom.items.HollowMaskArmorItem;
+import yt.mak.hollowmine.custom.items.HollowMaskItem;
 
 public class MakItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -20,12 +20,8 @@ public class MakItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> HOLLOW_MASK = ITEMS.register("hollow_mask",
-            () -> new HollowMaskArmorItem(MakArmorItems.HOLLOW_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+            () -> new HollowMaskItem(MakArmorItems.HOLLOW_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(18))));
-
-    public static final RegistryObject<Item> ALEXANDRITE_CHESTPLATE = ITEMS.register("alexandrite_chestplate",
-            () -> new ArmorItem(MakArmorItems.HOLLOW_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(18))));
 
     public static void register(IEventBus bus) {ITEMS.register(bus);}
 }
