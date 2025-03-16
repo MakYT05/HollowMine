@@ -3,19 +3,19 @@ package yt.mak.hollowmine;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import yt.mak.hollowmine.init.items.MakItems;
+import yt.mak.hollowmine.effect.MakEffects;
+import yt.mak.hollowmine.init.blocks.HMBlocks;
+import yt.mak.hollowmine.init.items.HMItems;
 
 @Mod(HollowMine.MODID)
 public class HollowMine {
@@ -27,11 +27,16 @@ public class HollowMine {
     public static final RegistryObject<CreativeModeTab> HOLLOW_TAB = CREATIVE_MODE_TABS.register("hollow_tab",
             () -> CreativeModeTab.builder()
                     .title(net.minecraft.network.chat.Component.translatable("itemGroup.hollow_tab"))
-                    .icon(() -> MakItems.GEM.get().getDefaultInstance())
+                    .icon(() -> HMItems.GEM.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
-                        output.accept(MakItems.GEM.get());
-                        output.accept(MakItems.HOLLOW_MASK.get());
-                        output.accept(MakItems.HOLLOW.get());
+                        output.accept(HMItems.GEM.get());
+                        output.accept(HMItems.HOLLOW_MASK.get());
+                        output.accept(HMItems.HOLLOW.get());
+                        output.accept(HMItems.DREAM_NAIL.get());
+                        output.accept(HMItems.HOLLOW_MANA.get());
+
+                        output.accept(HMBlocks.HOLLOW_TREE_BLOCK.get());
+                        output.accept(HMBlocks.HOLLOW_ORE.get());
                     })
                     .build());
 
@@ -42,7 +47,10 @@ public class HollowMine {
         MinecraftForge.EVENT_BUS.register(this);
 
         CREATIVE_MODE_TABS.register(modEventBus);
-        MakItems.register(modEventBus);
+
+        HMItems.register(modEventBus);
+        HMBlocks.register(modEventBus);
+        MakEffects.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }
@@ -51,16 +59,10 @@ public class HollowMine {
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(MakItems.GEM);
+            event.accept(HMItems.GEM);
         }
     }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {}
-
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {}
-    }
 }

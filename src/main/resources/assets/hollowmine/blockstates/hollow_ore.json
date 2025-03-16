@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "hollowmine:block/hollow_tree_block"
+      "model": "hollowmine:block/hollow_ore"
     }
   }
 }

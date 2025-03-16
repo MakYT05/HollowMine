@@ -1,7 +1,10 @@
 {
   "itemGroup.hollow_tab": "HollowMine",
+
   "item.hollowmine.gem": "Silver Gem",
   "item.hollowmine.hollow": "Hollow",
+  "item.hollowmine.hollow_mask": "Hollow Mask",
 
-  "item.hollowmine.hollow_mask": "Hollow Mask"
+  "block.hollowmine.hollow_tree_block": "Hollow Tree",
+  "block.hollowmine.hollow_ore": "Hollow Ore"
 }

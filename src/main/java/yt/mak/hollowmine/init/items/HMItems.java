@@ -1,15 +1,16 @@
 package yt.mak.hollowmine.init.items;
 
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yt.mak.hollowmine.HollowMine;
+import yt.mak.hollowmine.custom.items.DreamNail;
 import yt.mak.hollowmine.custom.items.HollowMaskItem;
+import yt.mak.hollowmine.custom.tier.ModTiers;
 
-public class MakItems {
+public class HMItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, HollowMine.MODID);
 
@@ -19,9 +20,14 @@ public class MakItems {
     public static final RegistryObject<Item> HOLLOW = ITEMS.register("hollow",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DREAM_NAIL = ITEMS.register("dream_nail",
+            () -> new DreamNail(ModTiers.DREAM_NAIL, new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> HOLLOW_MASK = ITEMS.register("hollow_mask",
-            () -> new HollowMaskItem(MakArmorItems.HOLLOW_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(18))));
+            () -> new HollowMaskItem(new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> HOLLOW_MANA = ITEMS.register("hollow_mana",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus bus) {ITEMS.register(bus);}
 }
