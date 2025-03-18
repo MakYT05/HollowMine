@@ -6,5 +6,9 @@
   "item.hollowmine.hollow_mask": "Hollow Mask",
 
   "block.hollowmine.hollow_tree_block": "Hollow Tree",
-  "block.hollowmine.hollow_ore": "Hollow Ore"
+  "block.hollowmine.hollow_ore": "Hollow Ore",
+
+  "entity.hollowmine.hollow_entity": "Hollow Entity",
+
+  "effect.hollowmine.hollow_effect": "HOLLOW"
 }

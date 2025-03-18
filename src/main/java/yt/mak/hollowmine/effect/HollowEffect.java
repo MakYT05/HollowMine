@@ -26,4 +26,14 @@ public class HollowEffect extends MobEffect {
     public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) {
         return true;
     }
+
+    @Override
+    public boolean isBeneficial() {
+        return false;
+    }
+
+    @Override
+    public boolean isInstantenous() {
+        return false;
+    }
 }
