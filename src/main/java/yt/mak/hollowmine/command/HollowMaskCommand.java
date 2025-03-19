@@ -28,6 +28,7 @@ import yt.mak.hollowmine.init.items.HMItems;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HollowMaskCommand {
+    public static boolean MASK_READY = false;
 
     @SubscribeEvent
     public static void onRegisterCommands(RegisterCommandsEvent event) {
@@ -40,15 +41,17 @@ public class HollowMaskCommand {
 
     private static int activateMask(ServerPlayer player) {
         if (removeItemFromInventory(player, HMItems.HOLLOW_MASK.get())) {
-            player.addEffect(new MobEffectInstance(MakEffects.HOLLOW_EFFECT.getHolder().get(), MobEffectInstance.INFINITE_DURATION, 0));
+            player.addEffect(new MobEffectInstance(MakEffects.HOLLOW_EFFECT.getHolder().get(), 10000 * 3, 0));
 
             player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 12 * 12, 0, false, false, true));
 
             player.sendSystemMessage(Component.literal("Вы активировали маску!").withStyle(ChatFormatting.GREEN));
 
+            MASK_READY = true;
+
             Level level = player.level();
             if (level instanceof ServerLevel serverLevel) {
-                Vec3 lookVec = player.getLookAngle().normalize().scale(5);
+                Vec3 lookVec = player.getLookAngle().normalize().scale(3);
                 BlockPos spawnPos = player.blockPosition().offset((int) lookVec.x, 0, (int) lookVec.z);
 
                 HollowEntity hollowEntity = new HollowEntity(HMEntities.HOLLOW_ENTITY.get(), serverLevel);
@@ -63,7 +66,7 @@ public class HollowMaskCommand {
                 serverLevel.addFreshEntity(hollowEntity);
 
                 MutableComponent message = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
-                        .append(" Зря ты примкнул к нам, СМЕРТНЫЙ!").withStyle(ChatFormatting.DARK_PURPLE);
+                        .append(Component.literal(" Зря ты примкнул к нам, СМЕРТНЫЙ!").withStyle(ChatFormatting.DARK_PURPLE));
 
                 player.sendSystemMessage(message);
 
