@@ -10,7 +10,7 @@ import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.custom.items.DreamNail;
 import yt.mak.hollowmine.custom.items.HollowMana;
 import yt.mak.hollowmine.custom.items.HollowMaskItem;
-import yt.mak.hollowmine.custom.tier.ModTiers;
+import yt.mak.hollowmine.custom.tier.HMTiers;
 
 public class HMItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -23,7 +23,7 @@ public class HMItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DREAM_NAIL = ITEMS.register("dream_nail",
-            () -> new DreamNail(ModTiers.DREAM_NAIL, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+            () -> new DreamNail(HMTiers.DREAM_NAIL, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
     public static final RegistryObject<Item> HOLLOW_MASK = ITEMS.register("hollow_mask",
             () -> new HollowMaskItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));

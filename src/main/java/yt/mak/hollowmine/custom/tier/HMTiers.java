@@ -8,7 +8,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
-public enum ModTiers implements Tier {
+public enum HMTiers implements Tier {
     DREAM_NAIL(2500, 9.0F, 12.0F, 22, SoundEvents.ANVIL_LAND, Ingredient.of(Blocks.AMETHYST_BLOCK));
 
     private final int durability;
@@ -18,7 +18,7 @@ public enum ModTiers implements Tier {
     private final SoundEvent sound;
     private final Ingredient repairIngredient;
 
-    ModTiers(int durability, float speed, float attackDamage, int enchantmentValue, SoundEvent sound, Ingredient repairIngredient) {
+    HMTiers(int durability, float speed, float attackDamage, int enchantmentValue, SoundEvent sound, Ingredient repairIngredient) {
         this.durability = durability;
         this.speed = speed;
         this.attackDamage = attackDamage;
