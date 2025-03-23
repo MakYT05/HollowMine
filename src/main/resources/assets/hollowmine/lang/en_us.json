@@ -5,11 +5,17 @@
   "item.hollowmine.hollow": "Hollow",
   "item.hollowmine.hollow_mask": "Hollow Mask",
   "item.hollowmine.dream_nail": "Dream Nail",
+  "item.hollowmine.hollow_mana": "Hollow Mana",
+  "item.hollowmine.hollow_amulet_hp": "Hollow Amulet HP",
+  "item.hollowmine.hollow_amulet_up": "Hollow Amulet UP",
 
   "block.hollowmine.hollow_tree_block": "Hollow Tree",
   "block.hollowmine.hollow_ore": "Hollow Ore",
 
   "entity.hollowmine.hollow_entity": "Hollow Entity",
+
+  "item.hollowmine.slipknot_music_disc": "Duality",
+  "item.hollowmine.slipknot_music_disc.desc": "Slipknot- Duality (HM)",
 
   "effect.hollowmine.hollow_effect": "HOLLOW"
 }

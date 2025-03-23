@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 public enum HMTiers implements Tier {
-    DREAM_NAIL(2500, 9.0F, 12.0F, 22, SoundEvents.ANVIL_LAND, Ingredient.of(Blocks.AMETHYST_BLOCK));
+    DREAM_NAIL(2500, 9.0F, 20.0F, 22, SoundEvents.ANVIL_LAND, Ingredient.of(Blocks.AMETHYST_BLOCK));
 
     private final int durability;
     private final float speed;

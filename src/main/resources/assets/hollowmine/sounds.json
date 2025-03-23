@@ -1,0 +1,11 @@
+{
+  "slipknot": {
+    "sounds": [
+      {
+        "name": "hollowmine:slipknot",
+        "stream": true,
+        "type": "music"
+      }
+    ]
+  }
+}

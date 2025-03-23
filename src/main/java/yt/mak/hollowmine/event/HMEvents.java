@@ -13,7 +13,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.effect.MakEffects;
+import yt.mak.hollowmine.effect.HMEffects;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HMEvents {
@@ -28,7 +28,7 @@ public class HMEvents {
         Player player = event.player;
         if (player.level().isClientSide) return;
 
-        if (player.hasEffect(MakEffects.HOLLOW_EFFECT.getHolder().get())) {
+        if (player.hasEffect(HMEffects.HOLLOW_EFFECT.getHolder().get())) {
             boolean isShifting = player.isShiftKeyDown();
             CompoundTag data = player.getPersistentData();
 
@@ -36,7 +36,7 @@ public class HMEvents {
             boolean isReady = data.getBoolean(READY_TAG);
 
             player.addEffect(new MobEffectInstance(
-                    MakEffects.HOLLOW_EFFECT.getHolder().get(),
+                    HMEffects.HOLLOW_EFFECT.getHolder().get(),
                     200,
                     0,
                     false,
@@ -59,7 +59,7 @@ public class HMEvents {
                 }
 
                 if (holdTime == 60 && !isReady) {
-                    player.sendSystemMessage(Component.literal("Вы готовы к рывку!").withStyle(ChatFormatting.AQUA));
+                    player.sendSystemMessage(Component.literal("Я готов!").withStyle(ChatFormatting.AQUA));
                     data.putBoolean(READY_TAG, true);
                 }
 
@@ -71,8 +71,6 @@ public class HMEvents {
                 Vec3 dashVector = player.getLookAngle().normalize().scale(15);
                 player.push(dashVector.x, 1, dashVector.z);
                 player.hurtMarked = true;
-
-                player.sendSystemMessage(Component.literal("РЫВОК!").withStyle(ChatFormatting.GREEN));
 
                 data.putInt(SHIFTHOLD_TAG, 0);
                 data.putBoolean(READY_TAG, false);

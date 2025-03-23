@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
@@ -22,7 +23,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.custom.entity.HollowEntity;
-import yt.mak.hollowmine.effect.MakEffects;
+import yt.mak.hollowmine.effect.HMEffects;
 import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;
 
@@ -41,7 +42,7 @@ public class HollowMaskCommand {
 
     private static int activateMask(ServerPlayer player) {
         if (removeItemFromInventory(player, HMItems.HOLLOW_MASK.get())) {
-            player.addEffect(new MobEffectInstance(MakEffects.HOLLOW_EFFECT.getHolder().get(), 10000 * 3, 0));
+            player.addEffect(new MobEffectInstance(HMEffects.HOLLOW_EFFECT.getHolder().get(), 10000 * 3, 0));
 
             player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 12 * 12, 0, false, false, true));
 
@@ -64,6 +65,9 @@ public class HollowMaskCommand {
                 hollowEntity.setYHeadRot(yaw);
 
                 serverLevel.addFreshEntity(hollowEntity);
+                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                        hollowEntity.getX(), hollowEntity.getY(), hollowEntity.getZ(),
+                        100, 1, 1, 1, 0.5);
 
                 MutableComponent message = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                         .append(Component.literal(" Зря ты примкнул к нам, СМЕРТНЫЙ!").withStyle(ChatFormatting.DARK_PURPLE));
@@ -74,6 +78,9 @@ public class HollowMaskCommand {
                     try {
                         Thread.sleep(5000);
                         hollowEntity.discard();
+                        serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                                hollowEntity.getX(), hollowEntity.getY(), hollowEntity.getZ(),
+                                100, 1, 1, 1, 0.5);
                     } catch (InterruptedException ignored) {}
                 });
             }

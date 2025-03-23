@@ -7,7 +7,6 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,13 +16,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import yt.mak.hollowmine.client.model.HollowEntityModel;
 import yt.mak.hollowmine.client.render.HollowEntityRenderer;
-import yt.mak.hollowmine.custom.entity.HollowEntity;
-import yt.mak.hollowmine.effect.MakEffects;
+import yt.mak.hollowmine.client.render.HollowTraderRenderer;
+import yt.mak.hollowmine.effect.HMEffects;
 import yt.mak.hollowmine.init.blocks.HMBlocks;
 import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;
+import yt.mak.hollowmine.sound.HMSounds;
 
 @Mod(HollowMine.MODID)
 public class HollowMine {
@@ -42,6 +41,9 @@ public class HollowMine {
                         output.accept(HMItems.HOLLOW.get());
                         output.accept(HMItems.DREAM_NAIL.get());
                         output.accept(HMItems.HOLLOW_MANA.get());
+                        output.accept(HMItems.SLIPKNOT_MUSIC_DISC.get());
+                        output.accept(HMItems.HOLLOW_AMULET_HP.get());
+                        output.accept(HMItems.HOLLOW_AMULET_UP.get());
 
                         output.accept(HMBlocks.HOLLOW_TREE_BLOCK.get());
                         output.accept(HMBlocks.HOLLOW_ORE.get());
@@ -59,7 +61,8 @@ public class HollowMine {
         HMItems.register(modEventBus);
         HMBlocks.register(modEventBus);
         HMEntities.register(modEventBus);
-        MakEffects.register(modEventBus);
+        HMEffects.register(modEventBus);
+        HMSounds.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
     }
@@ -80,6 +83,7 @@ public class HollowMine {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(HMEntities.HOLLOW_ENTITY.get(), HollowEntityRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_TRADER.get(), HollowTraderRenderer::new);
         }
     }
 }

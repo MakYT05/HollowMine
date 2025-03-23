@@ -6,7 +6,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.effect.MakEffects;
+import yt.mak.hollowmine.effect.HMEffects;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HMEffectEvents {
@@ -14,7 +14,7 @@ public class HMEffectEvents {
     public static void onPlayerRespawn(PlayerEvent.Clone event) {
         if (event.isWasDeath()) {
             ServerPlayer newPlayer = (ServerPlayer) event.getEntity();
-            newPlayer.addEffect(new MobEffectInstance(MakEffects.HOLLOW_EFFECT.getHolder().get(), MobEffectInstance.INFINITE_DURATION, 0));
+            newPlayer.addEffect(new MobEffectInstance(HMEffects.HOLLOW_EFFECT.getHolder().get(), MobEffectInstance.INFINITE_DURATION, 0));
         }
     }
 }

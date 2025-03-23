@@ -19,6 +19,9 @@ import javax.annotation.Nullable;
 public class HollowEntity extends Animal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
+    private double lastX;
+    private double lastY;
+    private double lastZ;
 
     public HollowEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -70,8 +73,25 @@ public class HollowEntity extends Animal {
     public void tick() {
         super.tick();
 
-        if(this.level().isClientSide()) {
-            this.setupAnimationStates();
+        if (this.level().isClientSide()) {
+            double dx = this.getX() - lastX;
+            double dy = this.getY() - lastY;
+            double dz = this.getZ() - lastZ;
+            double distanceMoved = dx * dx + dy * dy + dz * dz;
+
+            if (distanceMoved > 0.0001) {
+                if (!idleAnimationState.isStarted()) {
+                    idleAnimationState.start(this.tickCount);
+                }
+            } else {
+                idleAnimationState.stop();
+            }
+
+            lastX = this.getX();
+            lastY = this.getY();
+            lastZ = this.getZ();
         }
     }
+
+    public void setPersistenceRequired(boolean b) {}
 }

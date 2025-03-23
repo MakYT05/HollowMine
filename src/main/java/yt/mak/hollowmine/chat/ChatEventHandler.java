@@ -12,7 +12,7 @@ import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.effect.MakEffects;
+import yt.mak.hollowmine.effect.HMEffects;
 import yt.mak.hollowmine.init.items.HMItems;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -28,7 +28,7 @@ public class ChatEventHandler {
 
             if (message.equalsIgnoreCase("ДА")) {
                 if (removeItemFromInventory(player, HMItems.HOLLOW_MASK.get())) {
-                    player.addEffect(new MobEffectInstance(MakEffects.HOLLOW_EFFECT.getHolder().get(), MobEffectInstance.INFINITE_DURATION, 0));
+                    player.addEffect(new MobEffectInstance(HMEffects.HOLLOW_EFFECT.getHolder().get(), MobEffectInstance.INFINITE_DURATION, 0));
 
                     player.sendSystemMessage(Component.literal("Вы активировали маску!").withStyle(ChatFormatting.GREEN));
                 } else {
