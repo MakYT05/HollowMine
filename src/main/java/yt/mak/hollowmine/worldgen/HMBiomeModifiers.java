@@ -16,8 +16,6 @@ import yt.mak.hollowmine.init.entity.HMEntities;
 import java.util.List;
 
 public class HMBiomeModifiers{
-    public static final ResourceKey<BiomeModifier> ADD_HOLLOW_ORE = registerKey("add_hollow_ore");
-
     public static final ResourceKey<BiomeModifier> SPAWN_HOLLOW_TRADER = registerKey("spawn_hollow_trader");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {

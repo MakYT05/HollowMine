@@ -50,6 +50,7 @@ public class HollowMine {
                         output.accept(HMBlocks.HOLLOW_ORE.get());
                         output.accept(HMBlocks.HOLLOW_BED_BLOCK.get());
                         output.accept(HMBlocks.HOLLOW_BLOCK.get());
+                        output.accept(HMBlocks.HOLLOW_MECH_BLOCK.get());
                     })
                     .build());
 
