@@ -36,8 +36,11 @@ public class HMItems {
     public static final RegistryObject<Item> HOLLOW_AMULET_HP = ITEMS.register("hollow_amulet_hp",
             () -> new HollowAmuletHp(new Item.Properties().rarity(Rarity.EPIC)));
 
-    public static final RegistryObject<Item> HOLLOW_AMULET_UP = ITEMS.register("hollow_amulet_up",
-            () -> new HollowAmuletUp(new Item.Properties().rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> HOLLOW_AMULET_HEALTH = ITEMS.register("hollow_amulet_health",
+            () -> new HollowAmuletHealth(new Item.Properties().rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> HOLLOW_KEY= ITEMS.register("hollow_key",
+            () -> new HollowKey(new Item.Properties().rarity(Rarity.EPIC)));
 
     public static void register(IEventBus bus) {ITEMS.register(bus);}
 }

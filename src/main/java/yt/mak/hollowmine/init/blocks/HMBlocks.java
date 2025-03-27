@@ -10,7 +10,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yt.mak.hollowmine.HollowMine;
+import yt.mak.hollowmine.custom.blocks.HollowBlock;
 import yt.mak.hollowmine.custom.blocks.HollowOreBlock;
+import yt.mak.hollowmine.custom.blocks.HollowBedBlock;
 import yt.mak.hollowmine.custom.blocks.ModFlammableRotatedPillarBlock;
 import yt.mak.hollowmine.init.items.HMItems;
 
@@ -24,6 +26,12 @@ public class HMBlocks {
 
     public static final RegistryObject<Block> HOLLOW_ORE = registerBlock("hollow_ore",
             () -> new HollowOreBlock(BlockBehaviour.Properties.of().strength(2.0F)));
+
+    public static final RegistryObject<Block> HOLLOW_BED_BLOCK = registerBlock("hollow_bed_block",
+            () -> new HollowBedBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK)));
+
+    public static final RegistryObject<Block> HOLLOW_BLOCK = registerBlock("hollow_block",
+            () -> new HollowBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICK_STAIRS)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -28,7 +28,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class DreamNail extends SwordItem {
-    boolean READY = false;
+    public static boolean READY = false;
 
     public DreamNail(Tier tier, Properties properties) {
         super(tier, properties);

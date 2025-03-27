@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class HollowMaskItem extends Item {
-    boolean READY = false;
+    public static boolean READY = false;
 
     public HollowMaskItem(Properties properties) {
         super(properties);

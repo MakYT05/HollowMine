@@ -31,7 +31,7 @@ import java.util.UUID;
 public class HollowAmuletHp extends Item {
     private static final UUID HEALTH_BOOST_UUID = UUID.fromString("c614e44d-52a1-4d25-b3d3-e77570b347b3");
     private static final String AMULET_NBT_KEY = "HollowAmuletHealthGiven";
-    static boolean AMULET_COMPLETE = false;
+    public static boolean AMULET_COMPLETE = false;
 
     public HollowAmuletHp(Properties properties) {
         super(properties);

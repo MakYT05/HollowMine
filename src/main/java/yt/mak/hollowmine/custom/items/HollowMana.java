@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class HollowMana extends Item {
-    static boolean MANA_COMPLETE = false;
+    public static boolean MANA_COMPLETE = false;
 
     public HollowMana(Properties properties) {
         super(properties);

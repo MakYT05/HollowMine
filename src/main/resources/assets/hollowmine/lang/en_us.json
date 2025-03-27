@@ -7,10 +7,13 @@
   "item.hollowmine.dream_nail": "Dream Nail",
   "item.hollowmine.hollow_mana": "Hollow Mana",
   "item.hollowmine.hollow_amulet_hp": "Hollow Amulet HP",
-  "item.hollowmine.hollow_amulet_up": "Hollow Amulet UP",
+  "item.hollowmine.hollow_amulet_health": "Hollow Amulet Health",
+  "item.hollowmine.hollow_key": "Hollow Key",
 
   "block.hollowmine.hollow_tree_block": "Hollow Tree",
   "block.hollowmine.hollow_ore": "Hollow Ore",
+  "block.hollowmine.hollow_bed_block": "Hollow Bed Block",
+  "block.hollowmine.hollow_block": "Hollow Block",
 
   "entity.hollowmine.hollow_entity": "Hollow Entity",
 

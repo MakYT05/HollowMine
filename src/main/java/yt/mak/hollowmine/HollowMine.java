@@ -43,10 +43,13 @@ public class HollowMine {
                         output.accept(HMItems.HOLLOW_MANA.get());
                         output.accept(HMItems.SLIPKNOT_MUSIC_DISC.get());
                         output.accept(HMItems.HOLLOW_AMULET_HP.get());
-                        output.accept(HMItems.HOLLOW_AMULET_UP.get());
+                        output.accept(HMItems.HOLLOW_AMULET_HEALTH.get());
+                        output.accept(HMItems.HOLLOW_KEY.get());
 
                         output.accept(HMBlocks.HOLLOW_TREE_BLOCK.get());
                         output.accept(HMBlocks.HOLLOW_ORE.get());
+                        output.accept(HMBlocks.HOLLOW_BED_BLOCK.get());
+                        output.accept(HMBlocks.HOLLOW_BLOCK.get());
                     })
                     .build());
 
