@@ -124,6 +124,7 @@ public class HollowSun extends Animal {
                 this.setInvulnerable(true);
 
                 Player player = ((ServerLevel) this.level()).getNearestPlayer(this, 20);
+
                 if (player != null) {
                     if (this.level() instanceof ServerLevel serverLevel) {
                         scheduler.schedule(() -> {

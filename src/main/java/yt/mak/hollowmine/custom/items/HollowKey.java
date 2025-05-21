@@ -233,8 +233,8 @@ public class HollowKey extends Item {
                     }, 130, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
-                        MutableComponent message25 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
-                                .append(Component.literal(" Понятно, а что мне делать дальше?").withStyle(ChatFormatting.DARK_PURPLE));
+                        MutableComponent message25 = Component.literal("[Вы]").withStyle(ChatFormatting.WHITE)
+                                .append(Component.literal(" Понятно, а что мне делать дальше?").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message25);
                     }, 135, TimeUnit.SECONDS);

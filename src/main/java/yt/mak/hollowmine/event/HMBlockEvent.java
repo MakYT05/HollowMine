@@ -84,7 +84,7 @@ public class HMBlockEvent {
                                     .append(Component.literal(" СТОЙ!!!").withStyle(ChatFormatting.DARK_PURPLE));
 
                             player.sendSystemMessage(message1);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 0, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message2 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
@@ -98,67 +98,67 @@ public class HMBlockEvent {
                                     .append(Component.literal(" А что не так?").withStyle(ChatFormatting.AQUA));
 
                             player.sendSystemMessage(message3);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 10, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message4 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                     .append(Component.literal(" Ты ведь умрёшь!").withStyle(ChatFormatting.DARK_PURPLE));
 
                             player.sendSystemMessage(message4);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 15, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message5 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                     .append(Component.literal(" Да, я побоялся сказать... но зато говорю сейчас. Ты погибнешь!").withStyle(ChatFormatting.DARK_PURPLE));
 
                             player.sendSystemMessage(message5);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 20, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message6 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                     .append(Component.literal(" Почему?").withStyle(ChatFormatting.AQUA));
 
                             player.sendSystemMessage(message6);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 25, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message7 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                     .append(Component.literal(" Ты его воскрешаешь, отдавая своё тело.").withStyle(ChatFormatting.DARK_PURPLE));
 
                             player.sendSystemMessage(message7);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 30, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message8 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                     .append(Component.literal(" Считай ты становишься для него пустым сосудом.").withStyle(ChatFormatting.DARK_PURPLE));
 
                             player.sendSystemMessage(message8);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 35, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message9 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                     .append(Component.literal(" Подумай сейчас.").withStyle(ChatFormatting.DARK_PURPLE));
 
                             player.sendSystemMessage(message9);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 40, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             MutableComponent message10 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                     .append(Component.literal(" Ты точно готов?").withStyle(ChatFormatting.DARK_PURPLE));
 
                             player.sendSystemMessage(message10);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 45, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             HollowMechCommand.showQuestion((ServerPlayer) player);
-                        }, 5, TimeUnit.SECONDS);
+                        }, 50, TimeUnit.SECONDS);
 
                         scheduler.schedule(() -> {
                             hollowEntity.discard();
                             serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
                                     hollowEntity.getX(), hollowEntity.getY(), hollowEntity.getZ(),
                                     100, 1, 1, 1, 0.5);
-                        }, 60, TimeUnit.SECONDS);
+                        }, 55, TimeUnit.SECONDS);
                     }
                 }
             }

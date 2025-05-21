@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HMEventFinal {
     public static boolean BAD_FINAL = false;
-    public static boolean GOOD_FINAL = false;
+    public static boolean VERY_GOOD_FINAL = false;
 
     static ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
 
@@ -43,7 +43,7 @@ public class HMEventFinal {
                 MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
                         .append(Component.literal(" Не мешай!").withStyle(ChatFormatting.WHITE));
                 player.sendSystemMessage(message1);
-            }, 10, TimeUnit.SECONDS);
+            }, 0, TimeUnit.SECONDS);
 
             List<HollowEntity> hollowTargets = level.getEntitiesOfClass(HollowEntity.class,
                     boss.getBoundingBox().inflate(10), e -> true);
@@ -57,7 +57,7 @@ public class HMEventFinal {
                     MutableComponent message2 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
                             .append(Component.literal(" Ну давай, нападай!").withStyle(ChatFormatting.WHITE));
                     player.sendSystemMessage(message2);
-                }, 10, TimeUnit.SECONDS);
+                }, 5, TimeUnit.SECONDS);
 
                 float maxHealth = boss.getMaxHealth();
                 boss.setHealth(Math.min(maxHealth, maxHealth / 2));
@@ -79,7 +79,7 @@ public class HMEventFinal {
                 MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
                         .append(Component.literal(" НЕ-Е-ЕТ!!!").withStyle(ChatFormatting.WHITE));
                 player.sendSystemMessage(message1);
-            }, 10, TimeUnit.SECONDS);
+            }, 0, TimeUnit.SECONDS);
 
             scheduler.schedule(() -> {
                 MutableComponent message2 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
@@ -92,25 +92,25 @@ public class HMEventFinal {
                         .append(Component.literal(" Ты вернулся?!").withStyle(ChatFormatting.AQUA));
 
                 player.sendSystemMessage(message3);
-            }, 5, TimeUnit.SECONDS);
+            }, 10, TimeUnit.SECONDS);
 
             scheduler.schedule(() -> {
                 MutableComponent message4 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                         .append(Component.literal(" И не уходил.").withStyle(ChatFormatting.DARK_PURPLE));
                 player.sendSystemMessage(message4);
-            }, 5, TimeUnit.SECONDS);
+            }, 15, TimeUnit.SECONDS);
 
             scheduler.schedule(() -> {
                 MutableComponent message5 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                         .append(Component.literal(" Я всегда буду рядом!").withStyle(ChatFormatting.DARK_PURPLE));
                 player.sendSystemMessage(message5);
-            }, 5, TimeUnit.SECONDS);
+            }, 20, TimeUnit.SECONDS);
 
             level.sendParticles(ParticleTypes.CLOUD, boss.getX(), boss.getY(), boss.getZ(), 50, 1, 2, 1, 0.1);
 
             HollowArenaEvent.destroyArena(level);
 
-            GOOD_FINAL = true;
+            VERY_GOOD_FINAL = true;
         }
     }
 
@@ -127,13 +127,13 @@ public class HMEventFinal {
                 MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
                         .append(Component.literal(" Чтож...").withStyle(ChatFormatting.WHITE));
                 player.sendSystemMessage(message1);
-            }, 10, TimeUnit.SECONDS);
+            }, 0, TimeUnit.SECONDS);
 
             scheduler.schedule(() -> {
                 MutableComponent message2 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
                         .append(Component.literal(" Вот и мой... конец...").withStyle(ChatFormatting.WHITE));
                 player.sendSystemMessage(message2);
-            }, 10, TimeUnit.SECONDS);
+            }, 5, TimeUnit.SECONDS);
 
             scheduler.schedule(() -> {
                 MutableComponent message3 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
@@ -146,14 +146,14 @@ public class HMEventFinal {
                         .append(Component.literal(" Это тебе за друга!").withStyle(ChatFormatting.AQUA));
 
                 player.sendSystemMessage(message4);
-            }, 5, TimeUnit.SECONDS);
+            }, 15, TimeUnit.SECONDS);
 
             scheduler.schedule(() -> {
                 MutableComponent message5 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                         .append(Component.literal(" Вечных снов... вам двоим...").withStyle(ChatFormatting.AQUA));
 
                 player.sendSystemMessage(message5);
-            }, 5, TimeUnit.SECONDS);
+            }, 20, TimeUnit.SECONDS);
 
             player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 20 * 30, 0));
 

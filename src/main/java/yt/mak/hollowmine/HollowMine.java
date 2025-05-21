@@ -17,11 +17,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import yt.mak.hollowmine.client.render.*;
+import yt.mak.hollowmine.custom.tier.HMTiers;
 import yt.mak.hollowmine.effect.HMEffects;
 import yt.mak.hollowmine.init.blocks.HMBlocks;
 import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;
 import yt.mak.hollowmine.sound.HMSounds;
+import yt.mak.hollowmine.worldgen.HMBiomeModifiers;
 
 @Mod(HollowMine.MODID)
 public class HollowMine {
@@ -67,6 +69,8 @@ public class HollowMine {
         HMEntities.register(modEventBus);
         HMEffects.register(modEventBus);
         HMSounds.register(modEventBus);
+
+        HMBiomeModifiers.SPAWN_HOLLOW_TRADER.registryKey();
 
         modEventBus.addListener(this::addCreative);
     }

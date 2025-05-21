@@ -18,7 +18,8 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.custom.entity.HollowSun;
+import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.entity.HollowKnight;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
 import java.util.concurrent.Executors;
@@ -90,7 +91,7 @@ public class HollowMechCommand {
                 player.sendSystemMessage(message3);
 
                 ServerLevel level = (ServerLevel) player.level();
-                bossEntity = new HollowSun(HMEntities.HOLLOW_SUN.get(), level);
+                bossEntity = new HollowEntity(HMEntities.HOLLOW_ENTITY.get(), level);
                 bossEntity.setPos(player.getX(), player.getY(), player.getZ() + 3);
                 bossEntity.setInvulnerable(true);
                 ((Mob) bossEntity).setNoAi(true);

@@ -1,17 +1,18 @@
 package yt.mak.hollowmine.custom.items;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
@@ -21,6 +22,7 @@ import net.minecraft.world.phys.Vec3;
 import yt.mak.hollowmine.command.DreamNailCommand;
 import yt.mak.hollowmine.command.HollowMaskCommand;
 import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.tier.HMTiers;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
 import java.util.concurrent.Executors;
@@ -30,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 public class DreamNail extends SwordItem {
     public static boolean READY = false;
 
-    public DreamNail(Tier tier, Properties properties) {
+    public DreamNail(HMTiers tier, Properties properties) {
         super(tier, properties);
     }
 
