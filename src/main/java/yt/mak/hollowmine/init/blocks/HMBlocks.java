@@ -31,7 +31,7 @@ public class HMBlocks {
             () -> new HollowBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BRICK_STAIRS)));
 
     public static final RegistryObject<Block> HOLLOW_MECH_BLOCK = registerBlock("hollow_mech_block",
-            () -> new HollowMechBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK)));
+            () -> new HollowMechBlock(BlockBehaviour.Properties.of()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

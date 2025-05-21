@@ -16,8 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import yt.mak.hollowmine.client.render.HollowEntityRenderer;
-import yt.mak.hollowmine.client.render.HollowTraderRenderer;
+import yt.mak.hollowmine.client.render.*;
 import yt.mak.hollowmine.effect.HMEffects;
 import yt.mak.hollowmine.init.blocks.HMBlocks;
 import yt.mak.hollowmine.init.entity.HMEntities;
@@ -36,6 +35,7 @@ public class HollowMine {
                     .title(net.minecraft.network.chat.Component.translatable("itemGroup.hollow_tab"))
                     .icon(() -> HMItems.GEM.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
+                        output.accept(HMItems.HOLLOW_BOOK.get());
                         output.accept(HMItems.GEM.get());
                         output.accept(HMItems.HOLLOW_MASK.get());
                         output.accept(HMItems.HOLLOW.get());
@@ -74,8 +74,8 @@ public class HollowMine {
     private void commonSetup(final FMLCommonSetupEvent event)  {}
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(HMItems.GEM);
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(HMItems.HOLLOW_MASK);
         }
     }
 
@@ -88,6 +88,11 @@ public class HollowMine {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(HMEntities.HOLLOW_ENTITY.get(), HollowEntityRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_TRADER.get(), HollowTraderRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_KNIGHT.get(), HollowKnightRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_BEATLE.get(), HollowBeatleRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_DIE.get(), HollowDieRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_SUN.get(), HollowSunRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_GOOD_SUN.get(), HollowGoodSunRenderer::new);
         }
     }
 }

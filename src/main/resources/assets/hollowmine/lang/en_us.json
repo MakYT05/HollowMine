@@ -1,6 +1,7 @@
 {
   "itemGroup.hollow_tab": "HollowMine",
 
+  "item.hollowmine.hollow_book": "Hollow Book",
   "item.hollowmine.gem": "Silver Gem",
   "item.hollowmine.hollow": "Hollow",
   "item.hollowmine.hollow_mask": "Hollow Mask",
@@ -14,8 +15,11 @@
   "block.hollowmine.hollow_ore": "Hollow Ore",
   "block.hollowmine.hollow_bed_block": "Hollow Bed Block",
   "block.hollowmine.hollow_block": "Hollow Block",
+  "block.hollowmine.hollow_mech_block": "Hollow Mech Block",
 
   "entity.hollowmine.hollow_entity": "Hollow Entity",
+  "entity.hollowmine.hollow_trader": "Hollow Trader",
+  "entity.hollowmine.hollow_knight": "Hollow Knight",
 
   "item.hollowmine.slipknot_music_disc": "Duality",
   "item.hollowmine.slipknot_music_disc.desc": "Slipknot- Duality (HM)",

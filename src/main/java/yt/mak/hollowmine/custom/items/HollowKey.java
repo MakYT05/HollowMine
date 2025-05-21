@@ -69,189 +69,189 @@ public class HollowKey extends Item {
                                 .append(Component.literal(" Доволен теперь?!").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message3);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 10, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message4 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Доволен чем?").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message4);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 15, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message5 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Что?").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message5);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 20, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message6 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Это я должен спросить! Да, я убил тебя, но я ведь не знал кто ты.").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message6);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 25, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message7 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Я до сих пор не понимаю, что происходит, зачем я это делаю, что это за предметы, кто такие Пустые, и как я тут оказался?!").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message7);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 30, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message8 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Ты называешь меня смертным, смеёшься надо мной, но ответь почему? Что я сделал?!").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message8);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 35, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message9 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Хм... Походу ты и вправду тот самый...").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message9);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 40, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message10 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Тот самый кто?").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message10);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 45, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message11 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Тот самый заблудший. Хорошо, я расскажу тебе всё!").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message11);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 50, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message12 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" По рассказам Лучезарности... ах да, ты же не знаешь, это наш... Всевышний.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message12);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 55, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message13 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Так вот по его рассказам один человек со слезами на глазах вознёсся, ради того, чтобы не жить как все.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message13);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 60, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message14 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Лучезарность услышала тебя, и ты попал в наш мир под названием Халлоунест.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message14);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 65, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message15 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Но не думай что всё так просто!").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message15);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 70, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message16 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Он дал тебе возможность вознестись, чтобы помочь ему воскреснуть.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message16);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 75, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message17 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Для его воскрешения нужен ключ, который ты сейчас держишь.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message17);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 80, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message18 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Считай, что ты избранный.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message18);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 85, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message19 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Мы же, Пустые, обитатели этого мира, которым было поручено несмотря ни на что помочь тебе возродить Лучезарность.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message19);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 90, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message20 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" А не помнишь ты потому что после вознесения стирается память.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message20);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 100, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message21 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Оу... спасибо, что ответил, но у меня теперь возникло ещё три вопроса...").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message21);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 105, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message22 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Задавай.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message22);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 110, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message21 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Почему ты решил меня убить?").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message21);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 115, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message22 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" У нас, Пустых, тоже есть работы, и моя работа - убивать монстров. Я просто не понял кто ты.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message22);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 120, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message23 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" А почему меня ненавидишь?").withStyle(ChatFormatting.AQUA));
 
                         player.sendSystemMessage(message23);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 125, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message24 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Ну я же сказал, что до этого момента не знал кто ты.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message24);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 130, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message25 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Понятно, а что мне делать дальше?").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message25);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 135, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message26 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" Тебе нужно отыскать Колыбель - это место сна Лучезарности. Пробуди его. Принеси в этот мир свет!").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message26);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 140, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message27 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                                 .append(Component.literal(" УДАЧИ!!!").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message27);
-                    }, 5, TimeUnit.SECONDS);
+                    }, 145, TimeUnit.SECONDS);
 
                     serverLevel.getServer().execute(() -> {
                         try {
