@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-public class HollowOreBlock extends Block {
-    public HollowOreBlock(Properties properties) {
+public class HollowTable extends Block {
+    public HollowTable(Properties properties) {
         super(properties);
     }
 

@@ -18,7 +18,7 @@ public class HMVillager {
             DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, HollowMine.MODID);
 
     public static final RegistryObject<PoiType> HOLLOW_POI = POI_TYPES.register("hollow_poi",
-            () -> new PoiType(ImmutableSet.copyOf(HMBlocks.HOLLOW_ORE.get().getStateDefinition().getPossibleStates()),
+            () -> new PoiType(ImmutableSet.copyOf(HMBlocks.HOLLOW_TABLE.get().getStateDefinition().getPossibleStates()),
                     1, 1));
 
     public static final RegistryObject<VillagerProfession> HOLLOWENGER = VILLAGER_PROFESSIONS.register("hollowenger",
