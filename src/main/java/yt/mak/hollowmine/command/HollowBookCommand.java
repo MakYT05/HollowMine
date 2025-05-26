@@ -115,7 +115,7 @@ public class HollowBookCommand {
 
             scheduler.schedule(() -> {
                 MutableComponent message11 = Component.literal("[МАК]").withStyle(ChatFormatting.DARK_RED)
-                        .append(Component.literal(" ДА ПРЕДАСТ ТЕБЕ СИЛ ХРАНИТЕЛЬ ХОЛЛОУНЕСТА!!!").withStyle(ChatFormatting.RED));
+                        .append(Component.literal(" ДА ПРЕДАСТ ТЕБЕ СИЛ ХРАНИТЕЛЬ ХАЛЛОУНЕСТА!!!").withStyle(ChatFormatting.RED));
                 player.sendSystemMessage(message11);
             }, 50, TimeUnit.SECONDS);
 
@@ -128,7 +128,6 @@ public class HollowBookCommand {
 
         return Command.SINGLE_SUCCESS;
     }
-
 
     private static int cancelBook(ServerPlayer player) {
         player.sendSystemMessage(Component.literal("Будем ждать."));

@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import yt.mak.hollowmine.command.HollowMechCommand;
 import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.items.HollowKey;
 import yt.mak.hollowmine.init.blocks.HMBlocks;
 import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;
@@ -38,7 +39,7 @@ public class HMBlockEvent {
         Player player = event.getEntity();
         ItemStack item = event.getItemStack();
 
-        if (!START) {
+        if (!START && HollowKey.KEY_COMPLETE) {
             if (level.getBlockState(pos).getBlock() == HMBlocks.HOLLOW_MECH_BLOCK.get()) {
                 if (!level.isClientSide && item.getItem() == HMItems.HOLLOW_KEY.get()) {
                     BlockPos.betweenClosedStream(pos.offset(-10, -10, -10), pos.offset(10, -1, 10))

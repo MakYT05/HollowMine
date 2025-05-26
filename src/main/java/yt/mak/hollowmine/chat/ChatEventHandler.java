@@ -17,7 +17,6 @@ import yt.mak.hollowmine.init.items.HMItems;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ChatEventHandler {
-
     @SubscribeEvent
     public static void onChat(ServerChatEvent event) {
         ServerPlayer player = event.getPlayer();

@@ -18,7 +18,6 @@ public class HMEventBusEvents {
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(HollowEntityModel.LAYER_LOCATION, HollowEntityModel::createBodyLayer);
-        event.registerLayerDefinition(HollowTraderModel.LAYER_LOCATION, HollowTraderModel::createBodyLayer);
         event.registerLayerDefinition(HollowBeatleModel.LAYER_LOCATION, HollowBeatleModel::createBodyLayer);
         event.registerLayerDefinition(HollowDieModel.LAYER_LOCATION, HollowDieModel::createBodyLayer);
         event.registerLayerDefinition(HollowSunModel.LAYER_LOCATION, HollowSunModel::createBodyLayer);
@@ -28,7 +27,6 @@ public class HMEventBusEvents {
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(HMEntities.HOLLOW_ENTITY.get(), HollowEntity.createAttributes().build());
-        event.put(HMEntities.HOLLOW_TRADER.get(), HollowTrader.createAttributes().build());
         event.put(HMEntities.HOLLOW_KNIGHT.get(), HollowKnight.createAttributes().build());
         event.put(HMEntities.HOLLOW_BEATLE.get(), HollowBeatle.createAttributes().build());
         event.put(HMEntities.HOLLOW_DIE.get(), HollowDie.createAttributes().build());
@@ -38,9 +36,6 @@ public class HMEventBusEvents {
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-        event.register(HMEntities.HOLLOW_TRADER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-
         event.register(HMEntities.HOLLOW_BEATLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 

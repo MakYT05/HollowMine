@@ -11,7 +11,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.command.HollowMechCommand;
+import yt.mak.hollowmine.custom.entity.HollowSun;
 import yt.mak.hollowmine.init.blocks.HMBlocks;
+import yt.mak.hollowmine.init.entity.HMEntities;
 
 import java.util.Random;
 
@@ -41,6 +43,13 @@ public class HollowArenaEvent {
         player.teleportTo(level, center.getX(), center.getY() + 2, center.getZ(), player.getYRot(), player.getXRot());
 
         buildArena(level, center);
+
+        HollowSun hollowSun = HMEntities.HOLLOW_SUN.get().create(level);
+
+        if (hollowSun != null) {
+            hollowSun.moveTo(center.getX() + 0.5, center.getY(), center.getZ() + 0.5, 0, 0);
+            level.addFreshEntity(hollowSun);
+        }
 
         arenaBuilt = true;
     }

@@ -18,8 +18,9 @@
   "block.hollowmine.hollow_mech_block": "Hollow Mech Block",
 
   "entity.hollowmine.hollow_entity": "Hollow Entity",
-  "entity.hollowmine.hollow_trader": "Hollow Trader",
-  "entity.hollowmine.hollow_knight": "Hollow Knight",
+   "entity.hollowmine.hollow_knight": "Hollow Knight",
+
+  "entity.minecraft.villager.hollowmine.hollowenger": "Hollowenger",
 
   "item.hollowmine.slipknot_music_disc": "Duality",
   "item.hollowmine.slipknot_music_disc.desc": "Slipknot- Duality (HM)",

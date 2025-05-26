@@ -19,7 +19,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.custom.entity.HollowEntity;
-import yt.mak.hollowmine.custom.entity.HollowKnight;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
 import java.util.concurrent.Executors;
@@ -174,8 +173,8 @@ public class HollowMechCommand {
             MutableComponent message5 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                     .append(Component.literal(" Ха-ха-ха.").withStyle(ChatFormatting.DARK_PURPLE));
             player.sendSystemMessage(message5);
-        }, 25, TimeUnit.SECONDS);
 
-        FINAL = true;
+            FINAL = true;
+        }, 25, TimeUnit.SECONDS);
     }
 }

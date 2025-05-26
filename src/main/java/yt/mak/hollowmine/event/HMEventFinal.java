@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HMEventFinal {
-    public static boolean BAD_FINAL = false;
+    public static boolean MEDIUM_FINAL = false;
     public static boolean VERY_GOOD_FINAL = false;
 
     static ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
@@ -73,7 +73,6 @@ public class HMEventFinal {
 
         if (HollowSun.TWO && boss.isNoAi()) {
             boss.kill();
-            HollowSun.TWO = false;
 
             scheduler.schedule(() -> {
                 MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
@@ -109,6 +108,8 @@ public class HMEventFinal {
             level.sendParticles(ParticleTypes.CLOUD, boss.getX(), boss.getY(), boss.getZ(), 50, 1, 2, 1, 0.1);
 
             HollowArenaEvent.destroyArena(level);
+
+            HollowSun.TWO = false;
 
             VERY_GOOD_FINAL = true;
         }
@@ -159,7 +160,7 @@ public class HMEventFinal {
 
             HollowArenaEvent.destroyArena(level);
 
-            BAD_FINAL = true;
+            MEDIUM_FINAL = true;
         }
     }
 }

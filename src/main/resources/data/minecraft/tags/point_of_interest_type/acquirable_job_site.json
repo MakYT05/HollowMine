@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "hollowmine:hollow_poi",
+      "required": false
+    }
+  ]
+}

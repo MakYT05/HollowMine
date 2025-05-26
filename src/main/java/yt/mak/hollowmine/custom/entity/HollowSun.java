@@ -26,6 +26,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.event.HollowArenaEvent;
 import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;
@@ -35,6 +37,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+@Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class HollowSun extends Animal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
@@ -278,8 +281,6 @@ public class HollowSun extends Animal {
 
     private static int oneSun(ServerPlayer player) {
         if (!ONE) {
-            ONE = true;
-
             scheduler.schedule(() -> {
                 MutableComponent message1 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                         .append(Component.literal(" Что...?!").withStyle(ChatFormatting.DARK_PURPLE));
@@ -313,13 +314,13 @@ public class HollowSun extends Animal {
             }, 25, TimeUnit.SECONDS);
         }
 
+        ONE = true;
+
         return 1;
     }
 
     private static int twoSun(ServerPlayer player) {
         if (!TWO) {
-            TWO = true;
-
             scheduler.schedule(() -> {
                 MutableComponent message = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                         .append(Component.literal(" Хорошо!").withStyle(ChatFormatting.AQUA));
@@ -327,6 +328,8 @@ public class HollowSun extends Animal {
                 player.sendSystemMessage(message);
             }, 5, TimeUnit.SECONDS);
         }
+
+        TWO = true;
 
         return 1;
     }
