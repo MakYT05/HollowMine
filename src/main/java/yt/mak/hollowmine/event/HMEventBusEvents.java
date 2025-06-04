@@ -22,6 +22,7 @@ public class HMEventBusEvents {
         event.registerLayerDefinition(HollowDieModel.LAYER_LOCATION, HollowDieModel::createBodyLayer);
         event.registerLayerDefinition(HollowSunModel.LAYER_LOCATION, HollowSunModel::createBodyLayer);
         event.registerLayerDefinition(HollowGoodSunModel.LAYER_LOCATION, HollowGoodSunModel::createBodyLayer);
+        event.registerLayerDefinition(MakModel.LAYER_LOCATION, MakModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -32,6 +33,7 @@ public class HMEventBusEvents {
         event.put(HMEntities.HOLLOW_DIE.get(), HollowDie.createAttributes().build());
         event.put(HMEntities.HOLLOW_SUN.get(), HollowSun.createAttributes().build());
         event.put(HMEntities.HOLLOW_GOOD_SUN.get(), HollowGoodSun.createAttributes().build());
+        event.put(HMEntities.MAK.get(), Mak.createAttributes().build());
     }
 
     @SubscribeEvent

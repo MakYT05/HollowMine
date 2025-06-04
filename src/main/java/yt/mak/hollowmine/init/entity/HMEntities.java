@@ -37,6 +37,10 @@ public class HMEntities {
             ENTITY_TYPES.register("hollow_good_sun", () -> EntityType.Builder.of(HollowGoodSun::new, MobCategory.CREATURE)
                     .sized(1.5f, 1.5f).build("hollow_good_sun"));
 
+    public static final RegistryObject<EntityType<Mak>> MAK =
+            ENTITY_TYPES.register("mak", () -> EntityType.Builder.of(Mak::new, MobCategory.CREATURE)
+                    .sized(1f, 1.8f).build("mak"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

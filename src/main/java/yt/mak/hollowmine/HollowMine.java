@@ -34,7 +34,7 @@ public class HollowMine {
     public static final RegistryObject<CreativeModeTab> HOLLOW_TAB = CREATIVE_MODE_TABS.register("hollow_tab",
             () -> CreativeModeTab.builder()
                     .title(net.minecraft.network.chat.Component.translatable("itemGroup.hollow_tab"))
-                    .icon(() -> HMItems.GEM.get().getDefaultInstance())
+                    .icon(() -> HMItems.HOLLOW_MASK.get().getDefaultInstance())
                     .displayItems((parameters, output) -> {
                         output.accept(HMItems.HOLLOW_BOOK.get());
                         output.accept(HMItems.GEM.get());
@@ -46,6 +46,7 @@ public class HollowMine {
                         output.accept(HMItems.HOLLOW_AMULET_HP.get());
                         output.accept(HMItems.HOLLOW_AMULET_HEALTH.get());
                         output.accept(HMItems.HOLLOW_KEY.get());
+                        output.accept(HMItems.HOLLOW_DUST.get());
 
                         output.accept(HMBlocks.HOLLOW_TREE_BLOCK.get());
                         output.accept(HMBlocks.HOLLOW_ORE.get());
@@ -95,6 +96,7 @@ public class HollowMine {
             EntityRenderers.register(HMEntities.HOLLOW_DIE.get(), HollowDieRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_SUN.get(), HollowSunRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_GOOD_SUN.get(), HollowGoodSunRenderer::new);
+            EntityRenderers.register(HMEntities.MAK.get(), MakRenderer::new);
         }
     }
 }

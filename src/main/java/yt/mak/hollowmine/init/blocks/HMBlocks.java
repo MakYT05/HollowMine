@@ -34,7 +34,7 @@ public class HMBlocks {
             () -> new HollowMechBlock(BlockBehaviour.Properties.of()));
 
     public static final RegistryObject<Block> HOLLOW_TABLE = registerBlock("hollow_table",
-            () -> new HollowTable(BlockBehaviour.Properties.of()));
+            () -> new HollowTable(BlockBehaviour.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

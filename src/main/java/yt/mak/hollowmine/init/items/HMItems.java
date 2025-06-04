@@ -46,5 +46,8 @@ public class HMItems {
     public static final RegistryObject<Item> HOLLOW_KEY= ITEMS.register("hollow_key",
             () -> new HollowKey(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
 
+    public static final RegistryObject<Item> HOLLOW_DUST= ITEMS.register("hollow_dust",
+            () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus bus) {ITEMS.register(bus);}
 }

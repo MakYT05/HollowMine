@@ -78,7 +78,7 @@ public class HollowAmuletHealth extends Item {
                 if (!player.isDeadOrDying() && player.getHealth() < player.getMaxHealth()) {
                     player.setHealth(Math.min(player.getHealth() + 1.0F, player.getMaxHealth()));
                 }
-            }, 0, 1, TimeUnit.MINUTES);
+            }, 0, 10, TimeUnit.SECONDS);
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
     }
