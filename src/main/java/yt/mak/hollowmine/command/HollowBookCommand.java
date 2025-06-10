@@ -75,8 +75,6 @@ public class HollowBookCommand {
         sendMsg(player, "[МАК]", "Приветствую, путник.", 0, scheduler);
         sendMsg(player, "[МАК]", "Меня зовут МАК, и я разработчик этого сюжетного мода.", 5, scheduler);
 
-        mak.startHiAnimation();
-
         sendMsg(player, "[МАК]", "Да-да, сюжетного!", 10, scheduler);
         sendMsg(player, "[МАК]", "Здесь ты встретишь новых мобов, боссов, оружия, постройки, амулеты и т.д.", 15, scheduler);
         sendMsg(player, "[МАК]", "Это мой первый сюжетный мод, не судите строго.", 20, scheduler);

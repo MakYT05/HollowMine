@@ -73,8 +73,8 @@ public class HollowArenaEvent {
 
         Random rand = new Random();
         for (int i = 0; i < 15; i++) {
-            int rx = center.getX() + rand.nextInt(ARENA_SIZE * 2) - ARENA_SIZE;
-            int rz = center.getZ() + rand.nextInt(ARENA_SIZE * 2) - ARENA_SIZE;
+            int rx = center.getX() + rand.nextInt(ARENA_SIZE * 2 + 1) - ARENA_SIZE;
+            int rz = center.getZ() + rand.nextInt(ARENA_SIZE * 2 + 1) - ARENA_SIZE;
             int ry = center.getY();
 
             for (int y = 0; y < rand.nextInt(3) + 2; y++) {
@@ -107,8 +107,8 @@ public class HollowArenaEvent {
         BlockPos center = ARENA_CENTER;
         int size = ARENA_SIZE;
 
-        for (int x = -size; x <= size; x++) {
-            for (int z = -size; z <= size; z++) {
+        for (int x = -size - 1; x <= size + 1; x++) {
+            for (int z = -size - 1; z <= size + 1; z++) {
                 for (int y = -1; y <= 20; y++) {
                     BlockPos pos = center.offset(x, y, z);
                     level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);

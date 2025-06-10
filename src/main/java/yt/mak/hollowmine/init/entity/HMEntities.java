@@ -17,6 +17,10 @@ public class HMEntities {
             ENTITY_TYPES.register("hollow_entity", () -> EntityType.Builder.of(HollowEntity::new, MobCategory.CREATURE)
                     .sized(1.5f, 1.5f).build("hollow_entity"));
 
+    public static final RegistryObject<EntityType<HollowFly>> HOLLOW_FLY =
+            ENTITY_TYPES.register("hollow_fly", () -> EntityType.Builder.of(HollowFly::new, MobCategory.CREATURE)
+                    .sized(1.5f, 1.5f).build("hollow_fly"));
+
     public static final RegistryObject<EntityType<HollowKnight>> HOLLOW_KNIGHT =
             ENTITY_TYPES.register("hollow_knight", () -> EntityType.Builder.of(HollowKnight::new, MobCategory.CREATURE)
                     .sized(1.5f, 1.5f).build("hollow_knight"));

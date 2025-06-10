@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -32,8 +33,11 @@ public class HollowMechCommand {
     public static boolean FINAL = false;
     public static boolean VERY_BAD_FINAL = false;
 
+    public static boolean canAttackPlayer = false;
+    private static boolean dialogueStarted = false;
+
     private static final ServerBossEvent bossBar = new ServerBossEvent(
-            Component.literal("Пустой").withStyle(ChatFormatting.DARK_PURPLE),
+            Component.literal("ПУСТОЙ").withStyle(ChatFormatting.DARK_PURPLE),
             BossEvent.BossBarColor.PURPLE,
             BossEvent.BossBarOverlay.PROGRESS
     );
@@ -86,19 +90,26 @@ public class HollowMechCommand {
 
             scheduler.schedule(() -> {
                 MutableComponent message3 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
-                        .append(Component.literal(" Ты не оставляшеь мне выбора!").withStyle(ChatFormatting.DARK_PURPLE));
+                        .append(Component.literal(" Ты не оставляешь мне выбора!").withStyle(ChatFormatting.DARK_PURPLE));
                 player.sendSystemMessage(message3);
 
                 ServerLevel level = (ServerLevel) player.level();
                 bossEntity = new HollowEntity(HMEntities.HOLLOW_ENTITY.get(), level);
                 bossEntity.setPos(player.getX(), player.getY(), player.getZ() + 3);
                 bossEntity.setInvulnerable(true);
-                ((Mob) bossEntity).setNoAi(true);
+                ((Mob) bossEntity).setNoAi(false);
                 level.addFreshEntity(bossEntity);
 
                 bossBar.setProgress(1.0F);
                 bossBar.addPlayer(player);
                 bossHits = 0;
+                canAttackPlayer = true;
+                dialogueStarted = false;
+
+                if (bossEntity instanceof HollowEntity hollow) {
+                    hollow.setTargetPlayer(player);
+                    hollow.setCanAttack(true);
+                }
             }, 15, TimeUnit.SECONDS);
 
             ONE = true;
@@ -111,7 +122,6 @@ public class HollowMechCommand {
         if (!TWO) {
             MutableComponent message = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                     .append(Component.literal(" Хорошо, я перенесу тебя, но запомни, я всегда буду рядом, не бойся.").withStyle(ChatFormatting.DARK_PURPLE));
-
             player.sendSystemMessage(message);
 
             TWO = true;
@@ -133,18 +143,38 @@ public class HollowMechCommand {
                 bossBar.setProgress(progress);
             }
 
-            if (bossHits >= maxHits) {
+            if (bossHits >= maxHits && !dialogueStarted) {
                 bossBar.removeAllPlayers();
-                bossEntity = null;
+
+                canAttackPlayer = false;
+                if (bossEntity instanceof HollowEntity hollow) {
+                    hollow.setCanAttack(false);
+                    ((Mob) bossEntity).setNoAi(true);
+                    bossEntity.setInvulnerable(true);
+                }
+
+                dialogueStarted = true;
 
                 if (event.getSource().getEntity() instanceof ServerPlayer player) {
                     continueDialogue(player);
                 }
             }
         }
+
+        if (event.getSource().getEntity() == bossEntity && FINAL) {
+            event.setCanceled(true);
+        }
     }
 
     private static void continueDialogue(ServerPlayer player) {
+        canAttackPlayer = false;
+
+        if (bossEntity instanceof HollowEntity hollow) {
+            hollow.setCanAttack(false);
+            ((Mob) bossEntity).setNoAi(true);
+            bossEntity.setInvulnerable(true);
+        }
+
         scheduler.schedule(() -> {
             MutableComponent message1 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                     .append(Component.literal(" Хватит... ты доказал всё.").withStyle(ChatFormatting.DARK_PURPLE));
@@ -161,6 +191,14 @@ public class HollowMechCommand {
             MutableComponent message3 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                     .append(Component.literal(" Хах, смешно!").withStyle(ChatFormatting.DARK_PURPLE));
             player.sendSystemMessage(message3);
+
+            if (bossEntity != null && player.level() instanceof ServerLevel serverLevel) {
+                serverLevel.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                        bossEntity.getX(), bossEntity.getY() + 1, bossEntity.getZ(),
+                        30, 0.5, 0.5, 0.5, 0.01);
+                bossEntity.discard();
+                bossEntity = null;
+            }
         }, 15, TimeUnit.SECONDS);
 
         scheduler.schedule(() -> {

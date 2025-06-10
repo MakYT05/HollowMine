@@ -57,7 +57,7 @@ public class HollowBeatle extends Animal {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return HMEntities.HOLLOW_ENTITY.get().create(pLevel);
+        return HMEntities.HOLLOW_BEATLE.get().create(pLevel);
     }
 
     private void setupAnimationStates() {

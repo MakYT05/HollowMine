@@ -66,24 +66,6 @@ public class MakModel <T extends Mak> extends HierarchicalModel<T> {
 	@Override
 	public void setupAnim(Mak entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
-
-		if (entity.isWavingHi()) {
-			applyHiAnimation(ageInTicks);
-		} else {
-			if (limbSwingAmount > 0.1F) {
-				this.animateWalk(HollowEntityAnim.GO, limbSwing, limbSwingAmount, 2f, 2.5f);
-			}
-		}
-	}
-
-	private void applyHiAnimation(float ageInTicks) {
-		float progress = (float) Math.sin(ageInTicks * 0.25f * Math.PI);
-		float rotZ = progress * degToRad(135f);
-		Right_Arm.zRot = rotZ;
-	}
-
-	private float degToRad(float degrees) {
-		return (float) (degrees * Math.PI / 180.0);
 	}
 
 	@Override

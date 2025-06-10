@@ -52,7 +52,6 @@ public class IronSwordTracker {
                     BlockPos spawnPos = player.blockPosition().offset((int) lookVec.x, 0, (int) lookVec.z);
 
                     hollow.moveTo(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 0, 0);
-
                     hollow.setNoAi(true);
                     hollow.setInvulnerable(true);
                     hollow.setPersistenceRequired(true);
@@ -83,15 +82,12 @@ public class IronSwordTracker {
                     }, 5, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
-                        DreamNailCommand.showQuestion((ServerPlayer) player);
-
                         hollow.setNoAi(false);
                         hollow.setInvulnerable(false);
                         hollow.setTarget(player);
                     }, 8, TimeUnit.SECONDS);
 
-                    UUID hollowId = hollow.getUUID();
-                    immunePhase.put(hollowId, false);
+                    immunePhase.put(hollow.getUUID(), false);
                 }
             }
         }
@@ -107,8 +103,9 @@ public class IronSwordTracker {
             immunePhase.put(id, true);
             event.setCanceled(true);
 
-            hollow.setInvulnerable(true);
             hollow.setTarget(null);
+            hollow.setInvulnerable(true);
+            hollow.setNoAi(true);
 
             if (hollow.level() instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(ParticleTypes.SMOKE,
@@ -124,7 +121,6 @@ public class IronSwordTracker {
                 }
 
                 ItemStack reward = new ItemStack(HMItems.HOLLOW_MASK.get());
-
                 ServerPlayer nearestPlayer = (ServerPlayer) serverLevel.getNearestPlayer(hollow, 10);
                 if (nearestPlayer != null) {
                     boolean added = nearestPlayer.getInventory().add(reward);

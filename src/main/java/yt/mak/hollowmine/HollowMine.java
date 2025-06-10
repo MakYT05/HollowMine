@@ -91,6 +91,7 @@ public class HollowMine {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(HMEntities.HOLLOW_ENTITY.get(), HollowEntityRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_FLY.get(), HollowFlyRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_KNIGHT.get(), HollowKnightRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_BEATLE.get(), HollowBeatleRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_DIE.get(), HollowDieRenderer::new);
