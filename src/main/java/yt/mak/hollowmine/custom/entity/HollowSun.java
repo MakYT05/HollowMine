@@ -11,6 +11,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
@@ -25,6 +27,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -35,6 +38,7 @@ import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -53,6 +57,8 @@ public class HollowSun extends Animal {
 
     public static volatile boolean ONE = false;
     public static volatile boolean TWO = false;
+
+    public static HollowSun ACTIVE_SUN = null;
 
     static ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
 
@@ -136,6 +142,8 @@ public class HollowSun extends Animal {
 
                 this.setInvulnerable(true);
                 this.setNoAi(true);
+
+                ACTIVE_SUN = this;
 
                 Player player = ((ServerLevel) this.level()).getNearestPlayer(this, 20);
 
@@ -331,6 +339,66 @@ public class HollowSun extends Animal {
                         .append(Component.literal(" Ты не понимаешь!").withStyle(ChatFormatting.DARK_PURPLE));
                 player.sendSystemMessage(message5);
             }, 25, TimeUnit.SECONDS);
+
+            HollowSun boss = ACTIVE_SUN;
+            boss.setHealth(150.0F);
+
+            scheduler.schedule(() -> {
+                MutableComponent message6 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
+                        .append(Component.literal(" Не мешай!").withStyle(ChatFormatting.WHITE));
+                player.sendSystemMessage(message6);
+
+                if (ACTIVE_SUN != null && !ACTIVE_SUN.level().isClientSide()) {
+                    ServerLevel level = (ServerLevel) ACTIVE_SUN.level();
+
+                    List<HollowEntity> targets = level.getEntitiesOfClass(HollowEntity.class,
+                            new AABB(boss.blockPosition()).inflate(20), e -> true);
+
+                    if (!targets.isEmpty()) {
+                        HollowEntity h = targets.get(0);
+
+                        level.sendParticles(ParticleTypes.END_ROD,
+                                boss.getX(), boss.getY() + 1, boss.getZ(),
+                                30, 0.3, 0.3, 0.3, 0.01);
+                        level.playSound(null, boss.blockPosition(), SoundEvents.BLAZE_SHOOT, SoundSource.HOSTILE, 1.0F, 1.0F);
+
+                        scheduler.schedule(() -> {
+                            Vec3 from = boss.position().add(0, boss.getEyeHeight(), 0);
+                            Vec3 to = h.position().add(0, h.getBbHeight() / 2, 0);
+                            Vec3 direction = to.subtract(from).normalize();
+
+                            for (int i = 0; i < 20; i++) {
+                                Vec3 pos = from.add(direction.scale(i));
+                                level.sendParticles(ParticleTypes.FLAME, pos.x, pos.y, pos.z, 2, 0, 0, 0, 0);
+                            }
+
+                            level.sendParticles(ParticleTypes.EXPLOSION, h.getX(), h.getY() + 1, h.getZ(),
+                                    50, 1, 1, 1, 0.1);
+                            level.playSound(null, boss.getX(), boss.getY(), boss.getZ(), SoundEvents.BLAZE_SHOOT, SoundSource.HOSTILE, 1.0F, 1.0F);
+                            player.push((level.random.nextDouble() - 0.5) * 0.5, 0.2, (level.random.nextDouble() - 0.5) * 0.5);
+
+                            h.discard();
+
+                            float newHp = boss.getHealth() + boss.getMaxHealth() / 2;
+                            boss.setHealth(Math.min(boss.getMaxHealth(), newHp));
+
+                            boss.setNoAi(false);
+                            boss.setInvulnerable(false);
+                            boss.passivePhaseStarted = false;
+
+                            scheduler.schedule(() -> {
+                                MutableComponent message7 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
+                                        .append(Component.literal(" Ну давай, нападай!").withStyle(ChatFormatting.WHITE));
+                                player.sendSystemMessage(message7);
+                            }, 5, TimeUnit.SECONDS);
+
+                            level.sendParticles(ParticleTypes.FLAME, boss.getX(), boss.getY() + 1, boss.getZ(),
+                                    80, 0.5, 0.5, 0.5, 0.01);
+
+                        }, 2, TimeUnit.SECONDS);
+                    }
+                }
+            }, 30, TimeUnit.SECONDS);
         }
 
         TWO = true;

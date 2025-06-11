@@ -5,6 +5,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
@@ -46,41 +48,41 @@ public class HMEventFinal {
             return;
         }
 
-        if (HollowSun.TWO && boss.isNoAi()) {
-            event.setCanceled(true);
-
-            MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
-                    .append(Component.literal(" Не мешай!").withStyle(ChatFormatting.WHITE));
-            player.sendSystemMessage(message1);
-
-            List<HollowEntity> hollowTargets = level.getEntitiesOfClass(HollowEntity.class,
-                    new AABB(boss.blockPosition()).inflate(20), e -> true);
-
-            if (!hollowTargets.isEmpty()) {
-                HollowEntity hollow = hollowTargets.get(0);
-
-                level.sendParticles(ParticleTypes.EXPLOSION, hollow.getX(), hollow.getY() + 1, hollow.getZ(),
-                        50, 1, 1, 1, 0.1);
-                hollow.discard();
-
-                scheduler.schedule(() -> {
-                    MutableComponent message2 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
-                            .append(Component.literal(" Ну давай, нападай!").withStyle(ChatFormatting.WHITE));
-                    player.sendSystemMessage(message2);
-                }, 5, TimeUnit.SECONDS);
-
-                float maxHealth = boss.getMaxHealth();
-                boss.setHealth(Math.min(maxHealth, maxHealth / 2));
-                boss.setNoAi(false);
-                boss.setInvulnerable(false);
-                boss.passivePhaseStarted = false;
-
-                HollowSun.ONE = false;
-                HollowSun.TWO = false;
-            }
-
-            return;
-        }
+        //if (HollowSun.TWO && boss.isNoAi()) {
+        //    event.setCanceled(true);
+//
+        //    MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
+        //            .append(Component.literal(" Не мешай!").withStyle(ChatFormatting.WHITE));
+        //    player.sendSystemMessage(message1);
+//
+        //    List<HollowEntity> hollowTargets = level.getEntitiesOfClass(HollowEntity.class,
+        //            new AABB(boss.blockPosition()).inflate(20), e -> true);
+//
+        //    if (!hollowTargets.isEmpty()) {
+        //        HollowEntity hollow = hollowTargets.get(0);
+//
+        //        level.sendParticles(ParticleTypes.EXPLOSION, hollow.getX(), hollow.getY() + 1, hollow.getZ(),
+        //                50, 1, 1, 1, 0.1);
+        //        hollow.discard();
+//
+        //        scheduler.schedule(() -> {
+        //            MutableComponent message2 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
+        //                    .append(Component.literal(" Ну давай, нападай!").withStyle(ChatFormatting.WHITE));
+        //            player.sendSystemMessage(message2);
+        //        }, 5, TimeUnit.SECONDS);
+//
+        //        float maxHealth = boss.getMaxHealth();
+        //        boss.setHealth(Math.min(maxHealth, maxHealth / 2));
+        //        boss.setNoAi(false);
+        //        boss.setInvulnerable(false);
+        //        boss.passivePhaseStarted = false;
+//
+        //        HollowSun.ONE = false;
+        //        HollowSun.TWO = false;
+        //    }
+//
+        //    return;
+        //}
 
         if (HollowSun.ONE && boss.isNoAi()) {
             HollowMechCommand.FINAL = false;
@@ -139,6 +141,8 @@ public class HMEventFinal {
             }, 20, TimeUnit.SECONDS);
 
             level.sendParticles(ParticleTypes.CLOUD, boss.getX(), boss.getY(), boss.getZ(), 50, 1, 2, 1, 0.1);
+
+            player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 20 * 30, 0));
 
             HollowArenaEvent.destroyArena(level);
 
