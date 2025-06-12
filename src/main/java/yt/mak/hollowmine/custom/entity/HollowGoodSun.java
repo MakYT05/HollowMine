@@ -1,11 +1,5 @@
 package yt.mak.hollowmine.custom.entity;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AnimationState;
@@ -23,7 +17,6 @@ import yt.mak.hollowmine.init.items.HMItems;
 import javax.annotation.Nullable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class HollowGoodSun extends Animal {
     public final AnimationState idleAnimationState = new AnimationState();
@@ -89,18 +82,6 @@ public class HollowGoodSun extends Animal {
             lastX = this.getX();
             lastY = this.getY();
             lastZ = this.getZ();
-
-            Player player = ((ServerLevel) this.level()).getNearestPlayer(this, 20);
-
-            if (player != null) {
-                if (this.level() instanceof ServerLevel serverLevel) {
-                    scheduler.schedule(() -> {
-                        MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
-                                .append(Component.literal(" Стой...").withStyle(ChatFormatting.WHITE));
-                        player.sendSystemMessage(message1);
-                    }, 5, TimeUnit.SECONDS);
-                }
-            }
         }
     }
 }

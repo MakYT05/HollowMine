@@ -53,7 +53,9 @@ public class HollowSun extends Animal {
 
     private int laserCooldown = 100;
     private int teleportCooldown = 400;
+
     public boolean passivePhaseStarted = false;
+    private boolean passivePhaseTriggeredOnce = false;
 
     public static volatile boolean ONE = false;
     public static volatile boolean TWO = false;
@@ -137,8 +139,9 @@ public class HollowSun extends Animal {
         }
 
         if (!this.level().isClientSide()) {
-            if (!passivePhaseStarted && this.getHealth() <= 10) {
+            if (!passivePhaseStarted && !passivePhaseTriggeredOnce && this.getHealth() <= 10) {
                 passivePhaseStarted = true;
+                passivePhaseTriggeredOnce = true;
 
                 this.setInvulnerable(true);
                 this.setNoAi(true);
