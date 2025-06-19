@@ -30,7 +30,7 @@ public class HMFiveEvent {
         if (!forgeData.getBoolean(MESSAGE_SENT_TAG) && !FIVE) {
             if (HollowMaskItem.READY && DreamNail.READY && HollowMana.MANA_COMPLETE && HollowAmuletHp.AMULET_COMPLETE && HollowAmuletHealth.HEALTH_COMPLETE) {
                 MutableComponent message = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
-                        .append(Component.literal(" Отлично, ты собрал все артефакты. Теперь соедини их и активируй то, что создал!")
+                        .append(Component.literal(" Отлично, ты собрал все артефакты. Теперь соедини их и активируй то, что создал! (держите все предметы в инвентаре!)")
                                 .withStyle(ChatFormatting.DARK_PURPLE));
                 player.sendSystemMessage(message);
 

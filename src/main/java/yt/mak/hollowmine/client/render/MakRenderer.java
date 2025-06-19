@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.model.MakModel;
-import yt.mak.hollowmine.custom.entity.Mak;
+import yt.mak.hollowmine.custom.entities.Mak;
 
 public class MakRenderer extends MobRenderer<Mak, MakModel<Mak>> {
     public MakRenderer(EntityRendererProvider.Context context) {

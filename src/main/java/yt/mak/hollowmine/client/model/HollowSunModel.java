@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.anim.HollowSunAnim;
-import yt.mak.hollowmine.custom.entity.HollowSun;
+import yt.mak.hollowmine.custom.entities.HollowSun;
 
 public class HollowSunModel <T extends HollowSun> extends HierarchicalModel<T> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(HollowMine.MODID, "hollow_sun"), "main");

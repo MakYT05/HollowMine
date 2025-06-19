@@ -1,6 +1,7 @@
 package yt.mak.hollowmine.custom.items;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -9,7 +10,10 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 public class HollowMaskItem extends Item {
     public static boolean READY = false;
@@ -39,5 +43,16 @@ public class HollowMaskItem extends Item {
             }
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        if(Screen.hasShiftDown()) {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.mask.shift_down"));
+        } else {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.mask"));
+        }
+
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }

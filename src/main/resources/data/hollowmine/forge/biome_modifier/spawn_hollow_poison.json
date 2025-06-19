@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:ice_spikes",
+    "minecraft:snowy_taiga"
+  ],
+  "spawners": {
+    "type": "hollowmine:hollow_poison",
+    "maxCount": 5,
+    "minCount": 3,
+    "weight": 25
+  }
+}

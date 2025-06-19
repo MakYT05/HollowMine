@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.model.*;
-import yt.mak.hollowmine.custom.entity.*;
+import yt.mak.hollowmine.custom.entities.*;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -19,6 +19,7 @@ public class HMEventBusEvents {
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(HollowEntityModel.LAYER_LOCATION, HollowEntityModel::createBodyLayer);
         event.registerLayerDefinition(HollowFlyModel.LAYER_LOCATION, HollowFlyModel::createBodyLayer);
+        event.registerLayerDefinition(HollowPoisonModel.LAYER_LOCATION, HollowPoisonModel::createBodyLayer);
         event.registerLayerDefinition(HollowBeatleModel.LAYER_LOCATION, HollowBeatleModel::createBodyLayer);
         event.registerLayerDefinition(HollowDieModel.LAYER_LOCATION, HollowDieModel::createBodyLayer);
         event.registerLayerDefinition(HollowSunModel.LAYER_LOCATION, HollowSunModel::createBodyLayer);
@@ -30,6 +31,7 @@ public class HMEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(HMEntities.HOLLOW_ENTITY.get(), HollowEntity.createAttributes().build());
         event.put(HMEntities.HOLLOW_FLY.get(), HollowFly.createAttributes().build());
+        event.put(HMEntities.HOLLOW_POISON.get(), HollowPoison.createAttributes().build());
         event.put(HMEntities.HOLLOW_KNIGHT.get(), HollowKnight.createAttributes().build());
         event.put(HMEntities.HOLLOW_BEATLE.get(), HollowBeatle.createAttributes().build());
         event.put(HMEntities.HOLLOW_DIE.get(), HollowDie.createAttributes().build());
@@ -44,6 +46,9 @@ public class HMEventBusEvents {
                 Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 
         event.register(HMEntities.HOLLOW_FLY.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+
+        event.register(HMEntities.HOLLOW_POISON.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 
         event.register(HMEntities.HOLLOW_DIE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,

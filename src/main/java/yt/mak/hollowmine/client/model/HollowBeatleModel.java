@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.anim.HollowBeatleAnim;
 import yt.mak.hollowmine.client.anim.HollowEntityAnim;
-import yt.mak.hollowmine.custom.entity.HollowBeatle;
+import yt.mak.hollowmine.custom.entities.HollowBeatle;
 
 public class HollowBeatleModel<T extends HollowBeatle> extends HierarchicalModel<T> {
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(HollowMine.MODID, "hollow_beatle"), "main");

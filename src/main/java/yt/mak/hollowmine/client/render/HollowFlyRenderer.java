@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.model.HollowFlyModel;
-import yt.mak.hollowmine.custom.entity.HollowFly;
+import yt.mak.hollowmine.custom.entities.HollowFly;
 
 public class HollowFlyRenderer extends MobRenderer<HollowFly, HollowFlyModel<HollowFly>> {
     public HollowFlyRenderer(EntityRendererProvider.Context context) {

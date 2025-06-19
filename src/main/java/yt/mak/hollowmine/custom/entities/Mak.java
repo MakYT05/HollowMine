@@ -1,4 +1,4 @@
-package yt.mak.hollowmine.custom.entity;
+package yt.mak.hollowmine.custom.entities;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;

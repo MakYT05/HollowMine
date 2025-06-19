@@ -1,13 +1,13 @@
-package yt.mak.hollowmine.custom.entity;
+package yt.mak.hollowmine.custom.entities;
 
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.AnimationState;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -16,14 +16,14 @@ import yt.mak.hollowmine.init.items.HMItems;
 
 import javax.annotation.Nullable;
 
-public class HollowKnight extends Animal implements Enemy {
+public class HollowBeatle extends Animal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
     private double lastX;
     private double lastY;
     private double lastZ;
 
-    public HollowKnight(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public HollowBeatle(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -31,25 +31,22 @@ public class HollowKnight extends Animal implements Enemy {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
 
-        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, true));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(HMItems.HOLLOW.get()), false));
 
-        this.goalSelector.addGoal(2, new PanicGoal(this, 2.0));
-        this.goalSelector.addGoal(3, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(4, new TemptGoal(this, 1.25, stack -> stack.is(HMItems.HOLLOW.get()), false));
+        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
 
-        this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.25));
-        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 30D)
                 .add(Attributes.MOVEMENT_SPEED, 0.35D)
-                .add(Attributes.FOLLOW_RANGE, 24D)
-                .add(Attributes.ATTACK_DAMAGE, 6.0D);
+                .add(Attributes.FOLLOW_RANGE, 24D);
     }
 
     @Override
@@ -60,7 +57,7 @@ public class HollowKnight extends Animal implements Enemy {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return HMEntities.HOLLOW_KNIGHT.get().create(pLevel);
+        return HMEntities.HOLLOW_BEATLE.get().create(pLevel);
     }
 
     private void setupAnimationStates() {

@@ -1,6 +1,7 @@
 package yt.mak.hollowmine.custom.items;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -11,12 +12,14 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.entities.HollowEntity;
 import yt.mak.hollowmine.event.HMFiveEvent;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -136,14 +139,14 @@ public class HollowKey extends Item {
 
                     scheduler.schedule(() -> {
                         MutableComponent message13 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
-                                .append(Component.literal(" Так вот по его рассказам один человек со слезами на глазах вознёсся, ради того, чтобы не жить как все.").withStyle(ChatFormatting.DARK_PURPLE));
+                                .append(Component.literal(" Так вот по его рассказам один человек со слезами на глазах вознёсся, ради того, чтобы не жить как... все?").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message13);
                     }, 60, TimeUnit.SECONDS);
 
                     scheduler.schedule(() -> {
                         MutableComponent message14 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
-                                .append(Component.literal(" Лучезарность услышала тебя, и ты попал в наш мир под названием Халлоунест.").withStyle(ChatFormatting.DARK_PURPLE));
+                                .append(Component.literal(" Лучезарность услышал тебя, и ты попал в наш мир под названием Халлоунест.").withStyle(ChatFormatting.DARK_PURPLE));
 
                         player.sendSystemMessage(message14);
                     }, 65, TimeUnit.SECONDS);
@@ -268,5 +271,16 @@ public class HollowKey extends Item {
             }
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        if(Screen.hasShiftDown()) {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.key.shift_down"));
+        } else {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.key"));
+        }
+
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }

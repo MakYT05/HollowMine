@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import yt.mak.hollowmine.command.HollowMechCommand;
-import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.entities.HollowEntity;
 import yt.mak.hollowmine.custom.items.HollowKey;
 import yt.mak.hollowmine.init.blocks.HMBlocks;
 import yt.mak.hollowmine.init.entity.HMEntities;

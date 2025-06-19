@@ -7,7 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.custom.entity.*;
+import yt.mak.hollowmine.custom.entities.*;
 
 public class HMEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
@@ -20,6 +20,10 @@ public class HMEntities {
     public static final RegistryObject<EntityType<HollowFly>> HOLLOW_FLY =
             ENTITY_TYPES.register("hollow_fly", () -> EntityType.Builder.of(HollowFly::new, MobCategory.CREATURE)
                     .sized(1.5f, 1.5f).build("hollow_fly"));
+
+    public static final RegistryObject<EntityType<HollowPoison>> HOLLOW_POISON =
+            ENTITY_TYPES.register("hollow_poison", () -> EntityType.Builder.of(HollowPoison::new, MobCategory.CREATURE)
+                    .sized(1.5f, 1.5f).build("hollow_poison"));
 
     public static final RegistryObject<EntityType<HollowKnight>> HOLLOW_KNIGHT =
             ENTITY_TYPES.register("hollow_knight", () -> EntityType.Builder.of(HollowKnight::new, MobCategory.CREATURE)

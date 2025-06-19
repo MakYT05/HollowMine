@@ -1,4 +1,4 @@
-package yt.mak.hollowmine.custom.entity;
+package yt.mak.hollowmine.custom.entities;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.AgeableMob;
@@ -15,29 +15,28 @@ import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;
 
 import javax.annotation.Nullable;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
-public class HollowGoodSun extends Animal {
+public class HollowPoison extends Animal {
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
     private double lastX;
     private double lastY;
     private double lastZ;
 
-    static ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-
-    public HollowGoodSun(EntityType<? extends Animal> type, Level level) {
-        super(type, level);
+    public HollowPoison(EntityType<? extends Animal> pEntityType, Level pLevel) {
+        super(pEntityType, pLevel);
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(HMItems.HOLLOW.get()), false));
+
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
+
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
@@ -51,14 +50,23 @@ public class HollowGoodSun extends Animal {
     }
 
     @Override
-    public boolean isFood(ItemStack stack) {
-        return stack.is(HMItems.HOLLOW.get());
+    public boolean isFood(ItemStack pStack) {
+        return pStack.is(HMItems.HOLLOW.get());
     }
 
     @Nullable
     @Override
-    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob otherParent) {
-        return HMEntities.HOLLOW_GOOD_SUN.get().create(level);
+    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
+        return HMEntities.HOLLOW_POISON.get().create(pLevel);
+    }
+
+    private void setupAnimationStates() {
+        if(this.idleAnimationTimeout <= 0) {
+            this.idleAnimationTimeout = 40;
+            this.idleAnimationState.start(this.tickCount);
+        } else {
+            --this.idleAnimationTimeout;
+        }
     }
 
     @Override

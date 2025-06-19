@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "minecraft:beach",
+    "minecraft:savanna"
+  ],
+  "spawners": {
+    "type": "hollowmine:hollow_beatle",
+    "maxCount": 5,
+    "minCount": 3,
+    "weight": 25
+  }
+}

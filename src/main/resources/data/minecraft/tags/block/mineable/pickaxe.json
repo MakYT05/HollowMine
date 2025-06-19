@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "hollowmine:hollow_ore",
+    "hollowmine:hollow_planks",
+    "hollowmine:hollow_table",
+    "hollowmine:hollow_tree_block",
+    "hollowmine:hollow_leaves"
+  ]
+}

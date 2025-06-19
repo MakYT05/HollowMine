@@ -22,7 +22,7 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.entities.HollowEntity;
 import yt.mak.hollowmine.effect.HMEffects;
 import yt.mak.hollowmine.init.entity.HMEntities;
 import yt.mak.hollowmine.init.items.HMItems;

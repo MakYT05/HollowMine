@@ -19,7 +19,7 @@ import java.util.Random;
 public class HollowArenaFinalEvent {
     private static final BlockPos ARENA_CENTER = new BlockPos(0, 200, 0);
     private static final int ARENA_SIZE = 25;
-    private static boolean arenaBuilt = false;
+    public static boolean arenaBuilt = false;
 
     public static BlockPos getArenaCenter() {
         return ARENA_CENTER;
@@ -45,7 +45,7 @@ public class HollowArenaFinalEvent {
         arenaBuilt = true;
     }
 
-    private static void buildArena(ServerLevel level, BlockPos center) {
+    public static void buildArena(ServerLevel level, BlockPos center) {
         Block floorBlock = HMBlocks.HOLLOW_BED_BLOCK.get();
         Block wallBlock = HMBlocks.HOLLOW_BLOCK.get();
         Block hideBlock = HMBlocks.HOLLOW_BLOCK.get();

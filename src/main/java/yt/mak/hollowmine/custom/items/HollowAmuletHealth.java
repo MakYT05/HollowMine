@@ -1,6 +1,7 @@
 package yt.mak.hollowmine.custom.items;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -11,12 +12,14 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import yt.mak.hollowmine.command.HollowMaskCommand;
-import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.entities.HollowEntity;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -81,5 +84,16 @@ public class HollowAmuletHealth extends Item {
             }, 0, 10, TimeUnit.SECONDS);
         }
         return InteractionResultHolder.success(player.getItemInHand(hand));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        if(Screen.hasShiftDown()) {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.health.shift_down"));
+        } else {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.health"));
+        }
+
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }

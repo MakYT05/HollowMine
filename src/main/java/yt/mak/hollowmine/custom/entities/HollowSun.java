@@ -1,4 +1,4 @@
-package yt.mak.hollowmine.custom.entity;
+package yt.mak.hollowmine.custom.entities;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.ChatFormatting;

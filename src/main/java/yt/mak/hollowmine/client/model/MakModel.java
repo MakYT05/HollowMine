@@ -4,7 +4,6 @@ package yt.mak.hollowmine.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -13,8 +12,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.AnimationState;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.client.anim.HollowEntityAnim;
-import yt.mak.hollowmine.custom.entity.Mak;
+import yt.mak.hollowmine.custom.entities.Mak;
 
 import java.util.Collections;
 import java.util.Map;

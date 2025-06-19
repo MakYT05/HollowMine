@@ -11,7 +11,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.command.HollowMechCommand;
-import yt.mak.hollowmine.custom.entity.HollowSun;
+import yt.mak.hollowmine.custom.entities.HollowSun;
 import yt.mak.hollowmine.init.blocks.HMBlocks;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
@@ -35,7 +35,7 @@ public class HollowArenaEvent {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         if (!(event.player instanceof ServerPlayer player)) return;
-        if (!HollowMechCommand.FINAL || arenaBuilt) return;
+        if (!HollowMechCommand.FINAL && !HollowMechCommand.VERY_BAD_FINAL || arenaBuilt) return;
 
         ServerLevel level = player.serverLevel();
         BlockPos center = ARENA_CENTER;

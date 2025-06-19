@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.model.HollowSunModel;
-import yt.mak.hollowmine.custom.entity.HollowSun;
+import yt.mak.hollowmine.custom.entities.HollowSun;
 
 public class HollowSunRenderer extends MobRenderer<HollowSun, HollowSunModel<HollowSun>> {
     public HollowSunRenderer(EntityRendererProvider.Context context) {

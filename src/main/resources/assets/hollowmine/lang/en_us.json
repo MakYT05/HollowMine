@@ -11,6 +11,7 @@
   "item.hollowmine.hollow_amulet_health": "Hollow Amulet Health",
   "item.hollowmine.hollow_key": "Hollow Key",
   "item.hollowmine.hollow_dust": "Hollow Dust",
+  "item.hollowmine.hollow_stick": "Hollow Stick",
 
   "block.hollowmine.hollow_tree_block": "Hollow Tree",
   "block.hollowmine.hollow_ore": "Hollow Ore",
@@ -18,6 +19,10 @@
   "block.hollowmine.hollow_block": "Hollow Block",
   "block.hollowmine.hollow_mech_block": "Hollow Mech Block",
   "block.hollowmine.hollow_table": "Hollow Table",
+  "block.hollowmine.hollow_leaves": "Hollow Leaves",
+  "block.hollowmine.hollow_log": "Hollow Log",
+  "block.hollowmine.hollow_planks": "Hollow Planks",
+  "block.hollowmine.hollow_fence": "Hollow Fence",
 
   "entity.hollowmine.hollow_entity": "Hollow Entity",
    "entity.hollowmine.hollow_knight": "Hollow Knight",
@@ -27,5 +32,35 @@
   "item.hollowmine.slipknot_music_disc": "Duality",
   "item.hollowmine.slipknot_music_disc.desc": "Slipknot- Duality (HM)",
 
-  "effect.hollowmine.hollow_effect": "HOLLOW"
+  "effect.hollowmine.hollow_effect": "HOLLOW",
+
+  "tooltip.hollowmine.gem": "The currency of the Hallownest",
+  "tooltip.hollowmine.hollow": "Ore from the very void",
+  "tooltip.hollowmine.slipknot": "Legendary music",
+  "tooltip.hollowmine.dust": "Particles of emptiness",
+  "tooltip.hollowmine.stick": "A stick surrounded by emptiness",
+  "tooltip.hollowmine.book.shift_down": "But what happens if you press LMB?",
+  "tooltip.hollowmine.book": "At first glance, an ordinary book (Press §eShift§r for more Information!)",
+  "tooltip.hollowmine.nail.shift_down": "But what happens if you press LMB?",
+  "tooltip.hollowmine.nail": "A sword forged from the void (Press §eShift§r for more Information!)",
+  "tooltip.hollowmine.mask.shift_down": "But what happens if you press LMB?",
+  "tooltip.hollowmine.mask": "The Mask of an Empty Fallen in Battle (Press §eShift§r for more Information!)",
+  "tooltip.hollowmine.mana.shift_down": "But what happens if you press LMB?",
+  "tooltip.hollowmine.mana": "The Elixir of Empty Life (Press §eShift§r for more Information!)",
+  "tooltip.hollowmine.hp.shift_down": "But what happens if you press LMB?",
+  "tooltip.hollowmine.hp": "The Amulet of Life (Press §eShift§r for more Information!)",
+  "tooltip.hollowmine.health.shift_down": "But what happens if you press LMB?",
+  "tooltip.hollowmine.health": "The Amulet of Restoration (Press §eShift§r for more Information!)",
+  "tooltip.hollowmine.key.shift_down": "But what happens if you press LMB?",
+  "tooltip.hollowmine.key": "The key to the gate that holds back something powerful (Press §eShift§r for more Information!)",
+
+  "tooltip.hollowmine.tree.tooltip": "The log of an empty tree",
+  "tooltip.hollowmine.ore.tooltip": "The Ore of the Void itself",
+  "tooltip.hollowmine.bed.tooltip": "Indestructible matter",
+  "tooltip.hollowmine.hollow_block.tooltip": "The Brick Void",
+  "tooltip.hollowmine.mech.tooltip": "The cradle of something powerful",
+  "tooltip.hollowmine.table.tooltip": "The desk of a void specialist",
+  "tooltip.hollowmine.leaves.tooltip": "Dead leaves of emptiness",
+  "tooltip.hollowmine.planks.tooltip": "Fir trees... oh... empty boards?",
+  "tooltip.hollowmine.hollow_fence.tooltip": "An empty barrier for the uninvited"
 }

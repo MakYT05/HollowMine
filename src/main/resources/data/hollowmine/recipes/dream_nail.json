@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hollowmine:hollow"
+    },
+    "B": {
+      "item": "hollowmine:hollow_stick"
+    }
+  },
+  "pattern": [
+    " A ",
+    " A ",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hollowmine:dream_nail"
+  }
+}

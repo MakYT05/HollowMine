@@ -7,7 +7,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
-import yt.mak.hollowmine.custom.entity.HollowDie;
+import yt.mak.hollowmine.custom.entities.HollowDie;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
 @Mod.EventBusSubscriber(modid = HollowMine.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)

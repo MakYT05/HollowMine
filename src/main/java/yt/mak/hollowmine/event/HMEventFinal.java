@@ -15,8 +15,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.command.HollowMechCommand;
-import yt.mak.hollowmine.custom.entity.HollowEntity;
-import yt.mak.hollowmine.custom.entity.HollowSun;
+import yt.mak.hollowmine.custom.entities.HollowEntity;
+import yt.mak.hollowmine.custom.entities.HollowSun;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -43,42 +43,6 @@ public class HMEventFinal {
             event.setCanceled(true);
             return;
         }
-
-        //if (HollowSun.TWO && boss.isNoAi()) {
-        //    event.setCanceled(true);
-//
-        //    MutableComponent message1 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
-        //            .append(Component.literal(" Не мешай!").withStyle(ChatFormatting.WHITE));
-        //    player.sendSystemMessage(message1);
-//
-        //    List<HollowEntity> hollowTargets = level.getEntitiesOfClass(HollowEntity.class,
-        //            new AABB(boss.blockPosition()).inflate(20), e -> true);
-//
-        //    if (!hollowTargets.isEmpty()) {
-        //        HollowEntity hollow = hollowTargets.get(0);
-//
-        //        level.sendParticles(ParticleTypes.EXPLOSION, hollow.getX(), hollow.getY() + 1, hollow.getZ(),
-        //                50, 1, 1, 1, 0.1);
-        //        hollow.discard();
-//
-        //        scheduler.schedule(() -> {
-        //            MutableComponent message2 = Component.literal("[Лучезарность]").withStyle(ChatFormatting.GOLD)
-        //                    .append(Component.literal(" Ну давай, нападай!").withStyle(ChatFormatting.WHITE));
-        //            player.sendSystemMessage(message2);
-        //        }, 5, TimeUnit.SECONDS);
-//
-        //        float maxHealth = boss.getMaxHealth();
-        //        boss.setHealth(Math.min(maxHealth, maxHealth / 2));
-        //        boss.setNoAi(false);
-        //        boss.setInvulnerable(false);
-        //        boss.passivePhaseStarted = false;
-//
-        //        HollowSun.ONE = false;
-        //        HollowSun.TWO = false;
-        //    }
-//
-        //    return;
-        //}
 
         if (HollowSun.ONE && boss.isNoAi()) {
             HollowMechCommand.FINAL = false;
@@ -134,6 +98,8 @@ public class HMEventFinal {
                 MutableComponent message5 = Component.literal("[ПУСТОЙ]").withStyle(ChatFormatting.WHITE)
                         .append(Component.literal(" Я всегда буду рядом!").withStyle(ChatFormatting.DARK_PURPLE));
                 player.sendSystemMessage(message5);
+
+                VERY_GOOD_FINAL = true;
             }, 20, TimeUnit.SECONDS);
 
             level.sendParticles(ParticleTypes.CLOUD, boss.getX(), boss.getY(), boss.getZ(), 50, 1, 2, 1, 0.1);
@@ -144,8 +110,6 @@ public class HMEventFinal {
 
             HollowSun.ONE = false;
             HollowSun.TWO = false;
-
-            VERY_GOOD_FINAL = true;
         }
     }
 
@@ -190,6 +154,8 @@ public class HMEventFinal {
             MutableComponent message5 = Component.literal("[ВЫ]").withStyle(ChatFormatting.WHITE)
                     .append(Component.literal(" Вечных снов... вам двоим...").withStyle(ChatFormatting.AQUA));
             player.sendSystemMessage(message5);
+
+            MEDIUM_FINAL = true;
         }, 20, TimeUnit.SECONDS);
 
         player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 20 * 30, 0));
@@ -198,8 +164,6 @@ public class HMEventFinal {
 
         HollowSun.ONE = false;
         HollowSun.TWO = false;
-
-        MEDIUM_FINAL = true;
 
         scheduler.shutdown();
     }

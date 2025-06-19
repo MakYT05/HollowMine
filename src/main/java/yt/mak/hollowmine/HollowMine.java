@@ -47,6 +47,7 @@ public class HollowMine {
                         output.accept(HMItems.HOLLOW_AMULET_HEALTH.get());
                         output.accept(HMItems.HOLLOW_KEY.get());
                         output.accept(HMItems.HOLLOW_DUST.get());
+                        output.accept(HMItems.HOLLOW_STICK.get());
 
                         output.accept(HMBlocks.HOLLOW_TREE_BLOCK.get());
                         output.accept(HMBlocks.HOLLOW_ORE.get());
@@ -54,6 +55,9 @@ public class HollowMine {
                         output.accept(HMBlocks.HOLLOW_BLOCK.get());
                         output.accept(HMBlocks.HOLLOW_MECH_BLOCK.get());
                         output.accept(HMBlocks.HOLLOW_TABLE.get());
+                        output.accept(HMBlocks.HOLLOW_LEAVES.get());
+                        output.accept(HMBlocks.HOLLOW_PLANKS.get());
+                        output.accept(HMBlocks.HOLLOW_FENCE.get());
                     })
                     .build());
 
@@ -92,6 +96,7 @@ public class HollowMine {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(HMEntities.HOLLOW_ENTITY.get(), HollowEntityRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_FLY.get(), HollowFlyRenderer::new);
+            EntityRenderers.register(HMEntities.HOLLOW_POISON.get(), HollowPoisonRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_KNIGHT.get(), HollowKnightRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_BEATLE.get(), HollowBeatleRenderer::new);
             EntityRenderers.register(HMEntities.HOLLOW_DIE.get(), HollowDieRenderer::new);

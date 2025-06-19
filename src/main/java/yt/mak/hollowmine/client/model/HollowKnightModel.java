@@ -10,7 +10,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.anim.HollowKnightAnim;
-import yt.mak.hollowmine.custom.entity.HollowKnight;
+import yt.mak.hollowmine.custom.entities.HollowKnight;
 
 public class HollowKnightModel <T extends HollowKnight> extends HierarchicalModel<T>{
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(HollowMine.MODID, "hollow_entity"), "main");

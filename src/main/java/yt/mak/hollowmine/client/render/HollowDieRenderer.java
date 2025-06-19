@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import yt.mak.hollowmine.HollowMine;
 import yt.mak.hollowmine.client.model.HollowDieModel;
-import yt.mak.hollowmine.custom.entity.HollowDie;
+import yt.mak.hollowmine.custom.entities.HollowDie;
 
 public class HollowDieRenderer extends MobRenderer<HollowDie, HollowDieModel<HollowDie>> {
 public HollowDieRenderer(EntityRendererProvider.Context context) {

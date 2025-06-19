@@ -1,8 +1,7 @@
 package yt.mak.hollowmine.custom.items;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -11,20 +10,21 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import yt.mak.hollowmine.command.DreamNailCommand;
 import yt.mak.hollowmine.command.HollowMaskCommand;
-import yt.mak.hollowmine.custom.entity.HollowEntity;
+import yt.mak.hollowmine.custom.entities.HollowEntity;
 import yt.mak.hollowmine.custom.tier.HMTiers;
 import yt.mak.hollowmine.init.entity.HMEntities;
 
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -100,5 +100,16 @@ public class DreamNail extends SwordItem {
     private void applyEffects(Player player) {
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1));
         player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 200, 1));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        if(Screen.hasShiftDown()) {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.nail.shift_down"));
+        } else {
+            pTooltipComponents.add(Component.translatable("tooltip.hollowmine.nail"));
+        }
+
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }

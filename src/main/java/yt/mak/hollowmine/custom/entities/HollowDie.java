@@ -1,6 +1,9 @@
-package yt.mak.hollowmine.custom.entity;
+package yt.mak.hollowmine.custom.entities;
 
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
@@ -16,14 +19,15 @@ import yt.mak.hollowmine.init.items.HMItems;
 
 import javax.annotation.Nullable;
 
-public class HollowFly extends Animal {
+public class HollowDie extends Animal {
     public final AnimationState idleAnimationState = new AnimationState();
+    private final NonNullList<ItemStack> inventory = NonNullList.withSize(36, ItemStack.EMPTY);
     private int idleAnimationTimeout = 0;
     private double lastX;
     private double lastY;
     private double lastZ;
 
-    public HollowFly(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public HollowDie(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -57,7 +61,7 @@ public class HollowFly extends Animal {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return HMEntities.HOLLOW_FLY.get().create(pLevel);
+        return HMEntities.HOLLOW_DIE.get().create(pLevel);
     }
 
     private void setupAnimationStates() {
@@ -90,6 +94,32 @@ public class HollowFly extends Animal {
             lastX = this.getX();
             lastY = this.getY();
             lastZ = this.getZ();
+        } else {
+            boolean hasNearbyPlayers = !this.level().getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(10)).isEmpty();
+            this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(hasNearbyPlayers ? 0.35 : 0.0);
+        }
+
+        if (!this.level().isClientSide && this.tickCount % 5 == 0) {
+            ((ServerLevel) this.level()).sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                    this.getX() - 1, this.getY() + 1, this.getZ(),
+                    3,
+                    0.3, 0.3, 0.3,
+                    0.02
+            );
+        }
+    }
+
+    public NonNullList<ItemStack> getInventory() {
+        return inventory;
+    }
+
+    @Override
+    public void die(DamageSource cause) {
+        super.die(cause);
+        for (ItemStack stack : inventory) {
+            if (!stack.isEmpty()) {
+                this.spawnAtLocation(stack);
+            }
         }
     }
 }

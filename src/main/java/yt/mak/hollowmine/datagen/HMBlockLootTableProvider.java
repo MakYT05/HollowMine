@@ -36,6 +36,9 @@ public class HMBlockLootTableProvider extends BlockLootSubProvider {
         this.add(HMBlocks.HOLLOW_ORE.get(),
                 block -> createMultipleOreDrops(HMBlocks.HOLLOW_ORE.get(), HMItems.HOLLOW.get(), 1, 6));
 
+        this.dropSelf(HMBlocks.HOLLOW_LEAVES.get());
+        this.dropSelf(HMBlocks.HOLLOW_LOG.get());
+        this.dropSelf(HMBlocks.HOLLOW_TREE_BLOCK.get());
 
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
     }
